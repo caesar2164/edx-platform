@@ -60,4 +60,6 @@ from django.utils.translation import ugettext as _
   </%block>
 </ol>
 
-<a href="${marketing_link('FAQ')}" target="_blank" class="doc-link">${_("Help")}</a>
+% if not combined_login_and_register:
+  <a href="${marketing_link('FAQ')}" target="_blank" class="doc-link">${_("Help")}</a>
+% endif
