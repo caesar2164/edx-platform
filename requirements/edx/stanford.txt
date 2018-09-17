@@ -16,3 +16,4 @@ ubcpi-xblock==0.6.2
 -e git+https://github.com/oppia/xblock.git@9f6b95b7eb7dbabb96b77198a3202604f96adf65#egg=oppia-xblock
 git+https://github.com/mfogel/django-settings-context-processor.git
 git+https://github.com/open-craft/problem-builder.git@v2.6.5#egg=xblock-problem-builder==2.6.5
+-e git+https://github.com/saharm1/xblock-walkthrough.git@b073efcbb8087bfd0b17f3c8d3d00e2315f72219#egg=walkthrough
