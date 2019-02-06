@@ -126,7 +126,6 @@ class CourseEnrollmentTests(SharedModuleStoreTestCase):
         )
         self.assertListEqual([self.user, self.user_2], all_enrolled_users)
 
-<<<<<<< HEAD
     def test_users_enrolled_with_fake_email(self):
         """
         CourseEnrollment.users_enrolled_in should not return users with fake emails
@@ -151,7 +150,6 @@ class CourseEnrollmentTests(SharedModuleStoreTestCase):
 
         enrolled_users = CourseEnrollment.objects.enrollment_counts(self.course.id)
         self.assertDictEqual(enrolled_users, {'audit': 1, 'total': 1})
-=======
     @skip_unless_lms
     # NOTE: We mute the post_save signal to prevent Schedules from being created for new enrollments
     @factory.django.mute_signals(signals.post_save)
@@ -410,4 +408,3 @@ class TestManualEnrollmentAudit(SharedModuleStoreTestCase):
         self.assertFalse(ManualEnrollmentAudit.objects.filter(enrollment=enrollment).exclude(
             reason=""
         ))
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
