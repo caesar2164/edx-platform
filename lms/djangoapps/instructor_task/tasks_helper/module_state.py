@@ -21,11 +21,7 @@ from track.views import task_track
 from util.db import outer_atomic
 
 from xblock.runtime import KvsFieldData
-<<<<<<< HEAD
-from xblock.scorable import Score, ScorableXBlockMixin
-=======
 from xblock.scorable import Score
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from xmodule.modulestore.django import modulestore
 from ..exceptions import UpdateProblemModuleStateError
 from .runner import TaskProgress
@@ -33,13 +29,6 @@ from .utils import UNKNOWN_TASK_ID, UPDATE_STATUS_FAILED, UPDATE_STATUS_SKIPPED,
 
 TASK_LOG = logging.getLogger('edx.celery.task')
 
-<<<<<<< HEAD
-# define value to be used in grading events
-GRADES_RESCORE_EVENT_TYPE = 'edx.grades.problem.rescored'
-GRADES_OVERRIDE_EVENT_TYPE = 'edx.grades.problem.score_overridden'
-
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 def perform_module_state_update(update_fcn, filter_fcn, _entry_id, course_id, task_input, action_name):
     """
