@@ -143,11 +143,7 @@ from six import string_types
         </div>
 
         <div class="main-cta">
-<<<<<<< HEAD
         %if regularly_registered:
-=======
-        %if user.is_authenticated and registered:
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
           %if show_courseware_link:
             <a href="${course_target}">
           %endif
@@ -249,15 +245,11 @@ from six import string_types
       <div class="inner-wrapper">
         ${get_course_about_section(request, course, "overview")}
       </div>
-<<<<<<< HEAD
       % if sneakpeek_allowed and not regularly_registered:
         <%include file="sneak_peek_tos_privacy.html" />
       % endif
     </div>
-=======
-    </div>
     </%block>
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
     <div class="course-sidebar">
       <div class="course-summary">
@@ -274,11 +266,7 @@ from six import string_types
             <li class="important-dates-item">
               <span class="icon fa fa-calendar" aria-hidden="true"></span>
               <p class="important-dates-item-title">${_("Classes Start")}</p>
-<<<<<<< HEAD
-              % if isinstance(course_start_date, basestring):
-=======
               % if isinstance(course_start_date, string_types):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                   <span class="important-dates-item-text start-date">${course_start_date}</span>
               % else:
                   <%
@@ -369,13 +357,6 @@ from six import string_types
     </div>
       %endif
 
-<<<<<<< HEAD
-  % if get_course_about_section(request, course, "about_sidebar_html"):
-      <section class="about-sidebar-html">
-          ${get_course_about_section(request, course, "about_sidebar_html")}
-      </section>
-  %endif
-=======
     % if sidebar_html_enabled:
       % if get_course_about_section(request, course, "about_sidebar_html"):
         <section class="about-sidebar-html">
@@ -383,7 +364,6 @@ from six import string_types
         </section>
       % endif
     %endif
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
   </div>
 
   </div>
