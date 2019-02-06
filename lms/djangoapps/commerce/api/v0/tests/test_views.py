@@ -8,12 +8,8 @@ import ddt
 import mock
 import pytz
 from django.conf import settings
-<<<<<<< HEAD
 from django.core import mail
-from django.core.urlresolvers import reverse
-=======
 from django.urls import reverse, reverse_lazy
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from django.test import TestCase
 from django.test.utils import override_settings
 from edx_rest_api_client import exceptions
