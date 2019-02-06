@@ -123,13 +123,7 @@
 
             border-radius: 3px;
             display: block;
-<<<<<<< HEAD
-            float: left;
-            margin-right: flex-gutter(12);
-            font: normal 1.2rem/1.6rem $sans-serif;
-=======
             font: normal 1.2rem/1.6rem $font-family-sans-serif;
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
             letter-spacing: 1px;
             padding: ($baseline/2) 0;
             text-align: center;
@@ -185,16 +179,11 @@
             @include float(left);
             @include margin(1px, flex-gutter(8), 0, 0);
             @include transition(none);
-<<<<<<< HEAD
-            width: flex-grid(4, 8);
-          }
-          
-          span.sneakpeek {
-            margin-right: 0;
-=======
 
             width: flex-grid(5, 8);
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+          }
+          span.sneakpeek {
+            margin-right: 0;
           }
 
           #register_error {
@@ -453,28 +442,12 @@
           background: url('#{$static-path}/images/link-icon.png') left center no-repeat;
         }
       }
-<<<<<<< HEAD
-      
-      &.about-sidebar-html {
-        position: relative;
-        clear: both;
-        margin-top: 50px;
-        box-shadow: none;
-        border: none;
-      }
-    }
-
-    >.coursetalk-read-reviews {
-      margin-top: 50px;
-      margin-bottom: 0;
-=======
 
       &.about-sidebar-html {
         padding: 0 10px;
         box-shadow: none;
         border: none;
       }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     }
 
     header {
