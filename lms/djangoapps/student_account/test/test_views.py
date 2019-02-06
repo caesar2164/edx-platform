@@ -603,17 +603,11 @@ class StudentAccountLoginAndRegistrationTest(ThirdPartyAuthTestMixin, UrlResetMi
         self.google_provider.save()
         params = [("next", "/courses/something/?tpa_hint=oa2-google-oauth2")]
         response = self.client.get(reverse(url_name), params, HTTP_ACCEPT="text/html")
-<<<<<<< HEAD
-        self.assertRedirects(
-            response,
-            'auth/login/google-oauth2/?auth_entry={}&next=%2Fcourses%2Fsomething%2F%3Ftpa_hint%3Doa2-google-oauth2'.format(auth_entry),
-=======
         expected_url = '/auth/login/google-oauth2/?auth_entry={}&next=%2Fcourses'\
                        '%2Fsomething%2F%3Ftpa_hint%3Doa2-google-oauth2'.format(auth_entry)
         self.assertRedirects(
             response,
             expected_url,
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
             target_status_code=302
         )
 
@@ -654,17 +648,11 @@ class StudentAccountLoginAndRegistrationTest(ThirdPartyAuthTestMixin, UrlResetMi
         self.google_provider.save()
         params = [("next", "/courses/something/")]
         response = self.client.get(reverse(url_name), params, HTTP_ACCEPT="text/html")
-<<<<<<< HEAD
-        self.assertRedirects(
-            response,
-            'auth/login/google-oauth2/?auth_entry={}&next=%2Fcourses%2Fsomething%2F%3Ftpa_hint%3Doa2-google-oauth2'.format(auth_entry),
-=======
         expected_url = '/auth/login/google-oauth2/?auth_entry={}&next=%2Fcourses'\
                        '%2Fsomething%2F%3Ftpa_hint%3Doa2-google-oauth2'.format(auth_entry)
         self.assertRedirects(
             response,
             expected_url,
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
             target_status_code=302
         )
 
