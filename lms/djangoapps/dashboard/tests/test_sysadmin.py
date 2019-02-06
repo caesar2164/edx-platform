@@ -11,17 +11,6 @@ from uuid import uuid4
 
 import mongoengine
 from django.conf import settings
-<<<<<<< HEAD
-from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
-from django.test.client import Client
-from django.test.utils import override_settings
-from django.utils.timezone import utc as UTC
-from mock import patch
-from nose.plugins.attrib import attr
-from opaque_keys.edx.locations import SlashSeparatedCourseKey
-from pymongo.errors import PyMongoError
-=======
 from django.urls import reverse
 from django.test.client import Client
 from django.test.utils import override_settings
@@ -29,7 +18,9 @@ from pytz import UTC
 from nose.plugins.attrib import attr
 from opaque_keys.edx.keys import CourseKey
 from six import text_type
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+from django.contrib.auth.models import User
+from mock import patch
+from pymongo.errors import PyMongoError
 
 from dashboard.git_import import GitImportErrorNoDir
 from dashboard.models import CourseImportLog
