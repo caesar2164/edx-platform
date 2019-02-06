@@ -21,11 +21,8 @@ define([
                 end_date: '2014-11-05T20:00:00Z',
                 enrollment_start: '2014-10-00T00:00:00Z',
                 enrollment_end: '2014-11-05T00:00:00Z',
-<<<<<<< HEAD
                 enable_enrollment_email: false,
-=======
                 certificate_available_date: '2014-11-05T20:00:00Z',
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                 org: '',
                 course_id: '',
                 run: '',
