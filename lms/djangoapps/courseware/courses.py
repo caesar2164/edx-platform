@@ -6,22 +6,9 @@ import logging
 from collections import defaultdict
 from datetime import datetime
 
-<<<<<<< HEAD
-import pytz
-from django.conf import settings
-from django.core.urlresolvers import reverse
-from django.http import Http404
-from fs.errors import ResourceNotFoundError
-from opaque_keys.edx.keys import UsageKey
-from opaque_keys.edx.locations import SlashSeparatedCourseKey
-from path import Path as path
-
 import branding
 from branding_stanford.models import TileConfiguration
-=======
-import branding
 import pytz
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from courseware.access import has_access
 from courseware.access_response import StartDateError, MilestoneAccessError
 from courseware.date_summary import (
@@ -46,16 +33,14 @@ from opaque_keys.edx.keys import UsageKey
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from path import Path as path
+from opaque_keys.edx.locations import SlashSeparatedCourseKey
 from six import text_type
 from static_replace import replace_static_urls
 from student.models import CourseEnrollment
-<<<<<<< HEAD
 from util.date_utils import get_default_time_display
 from util.keyword_substitution import substitute_keywords_with_data
-=======
 from survey.utils import is_survey_required_and_unanswered
 from util.date_utils import strftime_localized
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from xmodule.modulestore.django import modulestore
 from xmodule.modulestore.exceptions import ItemNotFoundError
 from xmodule.x_module import STUDENT_VIEW
@@ -283,17 +268,12 @@ def get_course_about_section(request, course, section_key):
         'effort',
         'end_date',
         'prerequisites',
-<<<<<<< HEAD
-        'ocw_links',
-        'about_sidebar_html',
         'pre_enrollment_email',
         'post_enrollment_email',
         'pre_enrollment_email_subject',
         'post_enrollment_email_subject',
-=======
         'about_sidebar_html',
         'ocw_links'
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     }
 
     if section_key in html_sections:
