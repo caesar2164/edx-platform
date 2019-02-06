@@ -5,11 +5,8 @@ import copy
 import json
 import logging
 import random
-<<<<<<< HEAD
 from smtplib import SMTPException
-=======
 import re
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 import string  # pylint: disable=deprecated-module
 
 import django.utils
@@ -26,12 +23,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_GET, require_http_methods
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
-<<<<<<< HEAD
 from opaque_keys.edx.locations import Location
-from opaque_keys.edx.locations import SlashSeparatedCourseKey
-=======
 from opaque_keys.edx.locator import BlockUsageLocator
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from openedx.core.djangoapps.waffle_utils import WaffleSwitchNamespace
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
@@ -64,12 +57,9 @@ from course_action_state.managers import CourseActionStateItemNotFoundError
 from course_action_state.models import CourseRerunState, CourseRerunUIStateManager
 from course_creators.views import add_user_with_status_unrequested, get_course_creator_status
 from edxmako.shortcuts import render_to_response
-<<<<<<< HEAD
 from edxmako.shortcuts import render_to_string
 from microsite_configuration import microsite
-=======
 from milestones import api as milestones_api
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from models.settings.course_grading import CourseGradingModel
 from models.settings.course_metadata import CourseMetadata
 from models.settings.encoder import CourseSettingsEncoder
@@ -1108,14 +1098,10 @@ def settings_handler(request, course_key_string):
                 'EDITABLE_SHORT_DESCRIPTION',
                 settings.FEATURES.get('EDITABLE_SHORT_DESCRIPTION', True)
             )
-<<<<<<< HEAD
             default_enroll_email_template_pre = render_to_string('emails/default_pre_enrollment_message.txt', {})
             default_enroll_email_template_post = render_to_string('emails/default_post_enrollment_message.txt', {})
-            self_paced_enabled = SelfPacedConfiguration.current().enabled
-=======
             sidebar_html_enabled = course_experience_waffle().is_enabled(ENABLE_COURSE_ABOUT_SIDEBAR_HTML)
             # self_paced_enabled = SelfPacedConfiguration.current().enabled
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
             settings_context = {
                 'context_course': course_module,
