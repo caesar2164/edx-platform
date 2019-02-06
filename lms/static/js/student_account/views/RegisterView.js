@@ -165,13 +165,7 @@
 
                     if (this.autoSubmit) {
                         $(this.el).hide();
-<<<<<<< HEAD
-                        $('#register-honor_code').prop('checked', true);
-                        $('#register-terms_of_service').prop('checked', true);
-                        $('#register-privacy_policy').prop('checked', true);
-=======
                         $('#register-honor_code, #register-terms_of_service').prop('checked', true);
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                         this.submitForm();
                     }
 
