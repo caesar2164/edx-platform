@@ -39,6 +39,7 @@ def get_ordered_updates(request, course):
     )
     for update in ordered_updates:
         update['content'] = info_block.system.replace_urls(update['content'])
+        update['content'] = info_block.system.substitute_keywords_with_data(update['content'], keyword_context)
     return ordered_updates
 
 
