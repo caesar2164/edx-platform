@@ -68,12 +68,8 @@ from student.roles import CourseBetaTesterRole
 from track import contexts
 from util import milestones_helpers
 from util.json_request import JsonResponse
-<<<<<<< HEAD
 from util.keyword_substitution import substitute_keywords_with_data
-from util.model_utils import slugify
-=======
 from django.utils.text import slugify
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from util.sandboxing import can_execute_unsafe_code, get_python_lib_zip
 from xblock_django.user_service import DjangoXBlockUserService
 from xmodule.contentstore.django import contentstore
