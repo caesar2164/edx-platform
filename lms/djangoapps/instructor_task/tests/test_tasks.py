@@ -56,12 +56,8 @@ class TestInstructorTasks(InstructorTaskModuleTestCase):
         self.location = self.problem_location(PROBLEM_URL_NAME)
 
     def _create_input_entry(
-<<<<<<< HEAD
             self, student_ident=None, use_problem_url=True, course_id=None, only_if_higher=False, score=None,
             include_email=True
-=======
-            self, student_ident=None, use_problem_url=True, course_id=None, only_if_higher=False, score=None
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     ):
         """Creates a InstructorTask entry for testing."""
         task_id = str(uuid4())
@@ -70,11 +66,8 @@ class TestInstructorTasks(InstructorTaskModuleTestCase):
             task_input['problem_url'] = self.location
         if student_ident is not None:
             task_input['student'] = student_ident
-<<<<<<< HEAD
         if include_email:
             task_input['include_email'] = include_email
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         if score is not None:
             task_input['score'] = score
 
@@ -272,14 +265,6 @@ class TestOverrideScoreInstructorTask(TestInstructorTasks):
         self._test_missing_current_task(override_problem_score)
 
     def test_override_undefined_course(self):
-<<<<<<< HEAD
-        self._test_undefined_course(override_problem_score)
-
-    def test_override_undefined_problem(self):
-        self._test_undefined_problem(override_problem_score)
-
-    def test_override_with_no_state(self):
-=======
         """Tests that override problem score raises exception with undefined course"""
         self._test_undefined_course(override_problem_score)
 
@@ -289,7 +274,6 @@ class TestOverrideScoreInstructorTask(TestInstructorTasks):
 
     def test_override_with_no_state(self):
         """Tests override score with no problem state in StudentModule"""
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         self._test_run_with_no_state(override_problem_score, 'overridden')
 
     def test_override_with_failure(self):
@@ -302,12 +286,9 @@ class TestOverrideScoreInstructorTask(TestInstructorTasks):
         self._test_run_with_short_error_msg(override_problem_score)
 
     def test_overriding_non_scorable(self):
-<<<<<<< HEAD
-=======
         """
         Tests that override problem score raises an error if module descriptor has not `set_score` method.
         """
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         input_state = json.dumps({'done': True})
         num_students = 1
         self._create_students_with_state(num_students, input_state)
@@ -329,11 +310,7 @@ class TestOverrideScoreInstructorTask(TestInstructorTasks):
 
     def test_overriding_unaccessable(self):
         """
-<<<<<<< HEAD
-        Tests rescores a problem in a course, for all students fails if user has answered a
-=======
         Tests score override for a problem in a course, for all students fails if user has answered a
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         problem to which user does not have access to.
         """
         input_state = json.dumps({'done': True})
@@ -356,11 +333,7 @@ class TestOverrideScoreInstructorTask(TestInstructorTasks):
 
     def test_overriding_success(self):
         """
-<<<<<<< HEAD
-        Tests rescores a problem in a course, for all students succeeds.
-=======
         Tests score override for a problem in a course, for all students succeeds.
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         """
         mock_instance = MagicMock()
         getattr(mock_instance, 'override_problem_score').return_value = None
@@ -384,8 +357,6 @@ class TestOverrideScoreInstructorTask(TestInstructorTasks):
             action_name='overridden'
         )
 
-<<<<<<< HEAD
-=======
     def test_overriding_success_with_no_state(self):
         """
         Tests that score override is successful for a learner when they have no state.
@@ -405,7 +376,6 @@ class TestOverrideScoreInstructorTask(TestInstructorTasks):
             action_name='overridden'
         )
 
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 @attr(shard=3)
 @ddt.ddt
