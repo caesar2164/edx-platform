@@ -94,13 +94,8 @@ class VerticalBlock(SequenceFields, XModuleFields, StudioEditableBlock, XmlParse
             'xblock_context': context,
             'unit_title': self.display_name_with_default if not is_child_of_vertical else None,
             'show_bookmark_button': child_context.get('show_bookmark_button', not is_child_of_vertical),
-<<<<<<< HEAD
             'bookmarked': child_context.get('bookmarked', False),
-            'bookmark_id': "{},{}".format(child_context.get('username', ''), unicode(self.location))
-=======
-            'bookmarked': child_context['bookmarked'],
-            'bookmark_id': u"{},{}".format(child_context['username'], unicode(self.location)),  # pylint: disable=no-member
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+            'bookmark_id': u"{},{}".format(child_context.get('username', ''), unicode(self.location)),  # pylint: disable=no-member
         }))
 
         for tag in webpack_loader.utils.get_as_tags('VerticalStudentView'):
