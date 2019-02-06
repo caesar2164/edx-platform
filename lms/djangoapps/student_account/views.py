@@ -17,17 +17,11 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
 from django_countries import countries
 import third_party_auth
-<<<<<<< HEAD
-from commerce.models import CommerceConfiguration
-from edxmako.shortcuts import marketing_link
-from edxmako.shortcuts import render_to_response, render_to_string
-=======
 
 from edx_ace import ace
 from edx_ace.recipient import Recipient
 from edxmako.shortcuts import render_to_response
 from lms.djangoapps.commerce.models import CommerceConfiguration
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from lms.djangoapps.commerce.utils import EcommerceService
 from openedx.core.djangoapps.ace_common.template_context import get_base_template_context
 from openedx.core.djangoapps.commerce.utils import ecommerce_api_client
@@ -86,11 +80,7 @@ def login_and_registration_form(request, initial_mode="login"):
     # Determine the URL to redirect to following login/registration/third_party_auth
     redirect_to = get_next_url_for_login_page(request)
     # If we're already logged in, redirect to the dashboard
-<<<<<<< HEAD
     if UserProfile.has_registered(request.user):
-=======
-    if request.user.is_authenticated:
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         return redirect(redirect_to)
 
     if third_party_auth.is_enabled():
@@ -242,11 +232,7 @@ def password_change_request_handler(request):
     if email:
         try:
             request_password_change(email, request.is_secure())
-<<<<<<< HEAD
-            user = user if user.is_authenticated() else User.objects.get(email=email)
-=======
             user = user if user.is_authenticated else User.objects.get(email=email)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
             destroy_oauth_tokens(user)
         except UserNotFound:
             AUDIT_LOG.info("Invalid password reset attempt")
