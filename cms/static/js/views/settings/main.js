@@ -136,37 +136,23 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    this.$el.find('#' + this.fieldToSelectorMap.duration).val(this.model.get('duration'));
                    this.$el.find('#' + this.fieldToSelectorMap.description).val(this.model.get('description'));
 
-<<<<<<< HEAD
-                   // Stanford set values
-                   this.$el.find('#' + this.fieldToSelectorMap['about_sidebar_html']).val(this.model.get('about_sidebar_html'));
-                   this.codeMirrorize(null, $('#course-about-sidebar-html')[0]);
-
-                   this.pre_enrollment_email_subject_elem.val(this.model.get('pre_enrollment_email_subject'));
-                   this.post_enrollment_email_subject_elem.val(this.model.get('post_enrollment_email_subject'));
-
-                   this.pre_enrollment_email_elem.val(this.model.get('pre_enrollment_email'));
-                   this.codeMirrorize(null, $('#pre-enrollment-email')[0]);
-
-                   this.post_enrollment_email_elem.val(this.model.get('post_enrollment_email'));
-                   this.codeMirrorize(null, $('#post-enrollment-email')[0]);
-
-                   this.enable_enrollment_email_box.prop('checked', this.model.get('enable_enrollment_email'));
-                   // / Stanford set values
-
-                    if (this.enable_enrollment_email_box.prop('checked')) {
-                        this.enrollment_email_settings.show();
-                    } else {
-                        this.enrollment_email_settings.hide();
-                    }
-
-                   this.$el.find('#' + this.fieldToSelectorMap['short_description']).val(this.model.get('short_description'));
-=======
                    this.$el.find('#' + this.fieldToSelectorMap.short_description).val(this.model.get('short_description'));
                    this.$el.find('#' + this.fieldToSelectorMap.about_sidebar_html).val(
                        this.model.get('about_sidebar_html')
                    );
                    this.codeMirrorize(null, $('#course-about-sidebar-html')[0]);
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+                   this.$el.find("#" this.fieldToSelectorMap.pre_enrollment_email_subject).val(this.model.get("pre_enrollment_email_subject"));
+                   this.$el.find("#" this.fieldToSelectorMap.post_enrollment_email_subject).val(this.model.get("post_enrollment_email_subject"));
+                   this.$el.find("#" this.fieldToSelectorMap.pre_enrollment_email).val(this.model.get("pre_enrollment_email"));
+                   this.$el.find("#" this.fieldToSelectorMap.post_enrollment_email).val(this.model.get("post_enrollment_email"));
+                   this.codeMirrorize(null, $("#pre-enrollment-email")[0]);
+                   this.codeMirrorize(null, $("#post-enrollment-email")[0]);
+                   this.enable_enrollment_email_box.prop('checked', this.model.get('enable_enrollment_email'));
+                   if (this.enable_enrollment_email_box.prop('checked')) {
+                       this.enrollment_email_settings.show();
+                   } else {
+                       this.enrollment_email_settings.hide();
+                   }
 
                    this.$el.find('.current-course-introduction-video iframe').attr('src', this.model.videosourceSample());
                    this.$el.find('#' + this.fieldToSelectorMap.intro_video).val(this.model.get('intro_video') || '');
@@ -222,6 +208,12 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    return this;
                },
                fieldToSelectorMap: {
+                   pre_enrollment_email : 'pre-enrollment-email',
+                   post_enrollment_email : 'post-enrollment-email',
+                   enable_enrollment_email: 'enable-enrollment-email',
+                   pre_enrollment_email_subject :'pre-enrollment-email-subject',
+                   post_enrollment_email_subject:'post-enrollment-email-subject',
+                   enable_default_enrollment_email:'enable-default-enrollment-email',
                    language: 'course-language',
                    start_date: 'course-start',
                    end_date: 'course-end',
