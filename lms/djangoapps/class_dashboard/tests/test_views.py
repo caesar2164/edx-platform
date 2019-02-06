@@ -95,21 +95,11 @@ class TestViews(ModuleStoreTestCase):
         instructor = AdminFactory.create()
         self.request.user = instructor
 
-<<<<<<< HEAD
-        response = views.all_sequential_open_distrib(self.request, course.id.to_deprecated_string(), self.enrollment)
+        response = views.all_sequential_open_distrib(self.request, text_type(course.id), self.enrollment)
         self.assertEqual('[]', response.content)
 
-        response = views.all_problem_grade_distribution(self.request, course.id.to_deprecated_string(), self.enrollment)
+        response = views.all_problem_grade_distribution(self.request, text_type(course.id), self.enrollment)
         self.assertEqual('[]', response.content)
 
-        response = views.section_problem_grade_distrib(self.request, course.id.to_deprecated_string(), 'no section', self.enrollment)
-=======
-        response = views.all_sequential_open_distrib(self.request, text_type(course.id))
-        self.assertEqual('[]', response.content)
-
-        response = views.all_problem_grade_distribution(self.request, text_type(course.id))
-        self.assertEqual('[]', response.content)
-
-        response = views.section_problem_grade_distrib(self.request, text_type(course.id), 'no section')
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+        response = views.section_problem_grade_distrib(self.request, text_type(course.id), 'no section', self.enrollment)
         self.assertEqual('{"error": "error"}', response.content)
