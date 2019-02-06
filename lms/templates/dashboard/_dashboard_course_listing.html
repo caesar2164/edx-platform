@@ -33,7 +33,6 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
   if cert_name_long == "":
     cert_name_long = settings.CERT_NAME_LONG
   billing_email = settings.PAYMENT_SUPPORT_EMAIL
-  twitter_username = settings.PLATFORM_TWITTER_ACCOUNT
 %>
 
 <%namespace name='static' file='../static_content.html'/>
@@ -217,14 +216,7 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
                     % if share_settings.get('DASHBOARD_FACEBOOK', False):
                         <%
                           facebook_share_url = "{url}?{utm_params}".format(url=share_url.encode('utf-8'), utm_params=encoded_utm_parameters['facebook'])
-<<<<<<< HEAD
-                          share_text = _("I'm taking {course_name} online with {platform_name}. Check it out!").format(
-                            course_name=course_overview.display_name_with_default,
-                            platform_name='Stanford Online',
-                          )
-=======
                           share_text = _("I'm taking {course_name} online with {facebook_brand}. Check it out!").format(course_name=course_overview.display_name_with_default, facebook_brand=share_settings.get('FACEBOOK_BRAND', 'edX.org'))
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                           query_params = urllib.urlencode((('u', facebook_share_url), ('quote', share_text.encode('utf-8')),))
                           facebook_url = 'https://www.facebook.com/sharer/sharer.php?{query}'.format(query=query_params)
                           share_msg = _("Share {course_name} on Facebook").format(course_name=course_overview.display_name_with_default)
@@ -245,16 +237,7 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
                     % if share_settings.get('DASHBOARD_TWITTER', False):
                         <%
                           twitter_share_url = "{url}?{utm_params}".format(url=share_url.encode('utf-8'), utm_params=encoded_utm_parameters['twitter'])
-<<<<<<< HEAD
-                          default_share_text = _(
-                            "I'm taking {course_name} online with {twitter_username}. Check it out!"
-                          ).format(
-                            course_name=course_overview.display_name_with_default,
-                            twitter_username=twitter_username,
-                          )
-=======
                           default_share_text = _("I'm taking {course_name} online with {twitter_brand}. Check it out!").format(course_name=course_overview.display_name_with_default, twitter_brand=share_settings.get('TWITTER_BRAND', '@edxonline'))
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                           share_text = urllib.quote_plus(share_settings.get('DASHBOARD_TWITTER_TEXT', default_share_text.encode('utf-8')))
                           twitter_url = 'https://twitter.com/intent/tweet?text=' + share_text + '%20' + urllib.quote_plus(twitter_share_url)
                           share_msg = _("Share {course_name} on Twitter").format(course_name=course_overview.display_name_with_default)
