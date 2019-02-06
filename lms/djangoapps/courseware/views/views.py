@@ -19,14 +19,8 @@ from django.contrib.auth.models import AnonymousUser, User
 from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.db.models import Q
-<<<<<<< HEAD
-
 from django.http import HttpResponseNotFound, HttpResponseServerError
-
-from django.http import Http404, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden, QueryDict
-=======
 from django.http import Http404, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from django.shortcuts import redirect
 from django.template.context_processors import csrf
 from django.urls import reverse
@@ -41,12 +35,8 @@ from django.views.generic import View
 from markupsafe import escape
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey, UsageKey
-<<<<<<< HEAD
 from opaque_keys.edx.locations import SlashSeparatedCourseKey
-from pytz import utc
-=======
 from pytz import UTC
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from rest_framework import status
 from six import text_type
 
@@ -86,13 +76,8 @@ from lms.djangoapps.certificates import api as certs_api
 from lms.djangoapps.certificates.models import CertificateStatuses
 from lms.djangoapps.commerce.utils import EcommerceService
 from lms.djangoapps.courseware.exceptions import CourseAccessRedirect, Redirect
-<<<<<<< HEAD
-from lms.djangoapps.ccx.custom_exception import CCXLocatorValidationException
-from lms.djangoapps.grades.new.course_grade_factory import CourseGradeFactory
-=======
 from lms.djangoapps.experiments.utils import get_experiment_user_metadata_context
 from lms.djangoapps.grades.course_grade_factory import CourseGradeFactory
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from lms.djangoapps.instructor.enrollment import uses_shib
 from lms.djangoapps.instructor.views.api import require_global_staff
 from lms.djangoapps.verify_student.services import IDVerificationService
@@ -124,11 +109,6 @@ from openedx.features.enterprise_support.api import data_sharing_consent_require
 from shoppingcart.utils import is_shopping_cart_enabled
 from student.models import CourseEnrollment, UserTestGroup
 from util.cache import cache, cache_if_anonymous
-<<<<<<< HEAD
-from util.date_utils import get_time_display
-from util.date_utils import strftime_localized
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from util.db import outer_atomic
 from util.milestones_helpers import get_prerequisite_courses_display
 from util.views import _record_feedback_in_zendesk, ensure_valid_course_key, ensure_valid_usage_key
@@ -397,21 +377,12 @@ def course_info(request, course_id):
         if course.bypass_home and is_from_dashboard:
             return redirect(reverse('courseware', args=[course_id]))
 
-<<<<<<< HEAD
-        # link to where the student should go to enroll in the course:
-        # about page if there is not marketing site, SITE_NAME if there is
-        url_to_enroll = reverse(course_about, args=[course_id])
-        if settings.FEATURES.get('ENABLE_MKTG_SITE'):
-            url_to_enroll = marketing_link('COURSES')
-
         sneakpeek_allowed = is_sneakpeek_allowed(request.user, course, course_key)
         if sneakpeek_allowed:
             registered = registered_for_course(course, request.user)
             regularly_registered = is_regularly_registered(registered, request.user)
         else:
             regularly_registered = None
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         # Construct the dates fragment
         dates_fragment = None
 
@@ -469,18 +440,9 @@ def course_info(request, course_id):
             'show_enroll_banner': show_enroll_banner,
             'user_is_enrolled': user_is_enrolled,
             'dates_fragment': dates_fragment,
-<<<<<<< HEAD
             'url_to_enroll': url_to_enroll,
-            'sneakpeek_allowed': sneakpeek_allowed,
             'regularly_registered': regularly_registered,
-            'show_reviews_link': show_reviews_link,
-            # TODO: (Experimental Code). See https://openedx.atlassian.net/wiki/display/RET/2.+In-course+Verification+Prompts
-            'upgrade_link': check_and_get_upgrade_link(request, user, course.id),
-            'upgrade_price': get_cosmetic_verified_display_price(course),
-            # ENDTODO
-=======
             'course_tools': course_tools,
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         }
         context.update(
             get_experiment_user_metadata_context(
@@ -1044,16 +1006,8 @@ def _progress(request, course_key, student_id):
     # NOTE: To make sure impersonation by instructor works, use
     # student instead of request.user in the rest of the function.
 
-<<<<<<< HEAD
-    course_grade = CourseGradeFactory().create(student, course)
-    courseware_summary = []
-    if settings.FEATURES['ENABLE_PROGRESS_SUMMARY']:
-        courseware_summary = course_grade.chapter_grades.values()
-    grade_summary = course_grade.summary
-=======
     course_grade = CourseGradeFactory().read(student, course)
     courseware_summary = course_grade.chapter_grades.values()
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
     studio_url = get_studio_url(course, 'settings/grading')
     # checking certificate generation configuration
@@ -1557,7 +1511,6 @@ def course_survey(request, course_id):
     )
 
 
-<<<<<<< HEAD
 def _issue_with_data(item, part_id, message_by_part, question_types_by_part, num_options_by_part, num_rows_by_part, part_id_set):
     """
     A function where issues with the data returned by the analytics API are detected
@@ -1609,10 +1562,6 @@ def _issue_with_data(item, part_id, message_by_part, question_types_by_part, num
     return False
 
 
-def is_course_passed(course, grade_summary=None, student=None, request=None):
-=======
-def is_course_passed(student, course, course_grade=None):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     """
     check user's course passing status. return True if passed
 
