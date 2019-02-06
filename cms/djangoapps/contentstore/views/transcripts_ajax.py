@@ -286,33 +286,7 @@ def check_transcripts(request):
         `video` is html5 or youtube video_id
         `mode` is youtube, ,p4 or webm
 
-    Returns transcripts_presence: dictionary containing the status of the video
-
-    """
-    response = {
-        'html5_local': [],
-        'html5_equal': False,
-        'is_youtube_mode': False,
-        'youtube_local': False,
-        'youtube_server': False,
-        'youtube_diff': True,
-        'current_item_subs': None,
-        'status': 'Success',
-    }
-    try:
-        __, videos, item = _validate_transcripts_data(request)
-    except TranscriptsRequestValidationException as e:
-        return error_response(response, e.message)
-
-    transcripts_presence = get_transcripts_presence(videos, item)
-    return JsonResponse(transcripts_presence)
-
-
-def get_transcripts_presence(videos, item):
-    """ fills in the transcripts_presence dictionary after for a given component
-    with its list of videos.
-
-    Returns transcripts_presence dict:
+    Returns transcripts_presence dict::
 
         html5_local: list of html5 ids, if subtitles exist locally for them;
         is_youtube_mode: bool, if we have youtube_id, and as youtube mode is of higher priority, reflect this with flag;
@@ -332,10 +306,8 @@ def get_transcripts_presence(videos, item):
         'youtube_server': False,
         'youtube_diff': True,
         'current_item_subs': None,
-        'status': 'Success',
+        'status': 'Error',
     }
-<<<<<<< HEAD
-=======
 
     try:
         __, videos, item = _validate_transcripts_data(request)
@@ -343,7 +315,6 @@ def get_transcripts_presence(videos, item):
         return error_response(transcripts_presence, text_type(e))
 
     transcripts_presence['status'] = 'Success'
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
     try:
         edx_video_id = clean_video_id(videos.get('edx_video_id'))
@@ -367,37 +338,6 @@ def get_transcripts_presence(videos, item):
             filename = 'subs_{0}.srt.sjson'.format(youtube_id)
             content_location = StaticContent.compute_location(item.location.course_key, filename)
             try:
-<<<<<<< HEAD
-                youtube_server_subs = get_transcripts_from_youtube(
-                    youtube_id,
-                    settings,
-                    item.runtime.service(item, "i18n")
-                )
-                if json.loads(local_transcripts) == youtube_server_subs:  # check transcripts for equality
-                    transcripts_presence['youtube_diff'] = False
-            except GetTranscriptsFromYouTubeException:
-                pass
-
-    # Check for html5 local transcripts presence
-    html5_subs = []
-    for html5_id in videos['html5']:
-        filename = 'subs_{0}.srt.sjson'.format(html5_id)
-        content_location = StaticContent.compute_location(item.location.course_key, filename)
-        try:
-            html5_subs.append(contentstore().find(content_location).data)
-            transcripts_presence['html5_local'].append(html5_id)
-        except NotFoundError:
-            log.debug("Can't find transcripts in storage for non-youtube video_id: %s", html5_id)
-        if len(html5_subs) == 2:  # check html5 transcripts for equality
-            transcripts_presence['html5_equal'] = json.loads(html5_subs[0]) == json.loads(html5_subs[1])
-
-    command, subs_to_use = _transcripts_logic(transcripts_presence, videos)
-    transcripts_presence.update({
-        'command': command,
-        'subs': subs_to_use,
-    })
-    return transcripts_presence
-=======
                 local_transcripts = contentstore().find(content_location).data
                 transcripts_presence['youtube_local'] = True
             except NotFoundError:
@@ -443,7 +383,6 @@ def get_transcripts_presence(videos, item):
 
     transcripts_presence.update({'command': command})
     return JsonResponse(transcripts_presence)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 
 def _transcripts_logic(transcripts_presence, videos):
