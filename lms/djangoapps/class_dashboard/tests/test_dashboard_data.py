@@ -346,11 +346,7 @@ class TestGetProblemGradeDistribution(SharedModuleStoreTestCase):
 
     def test_get_students_problem_grades(self):
 
-<<<<<<< HEAD
-        attributes = '?module_id=' + self.item.location.to_deprecated_string() + '&course_id=' + self.course.id.to_deprecated_string()
-=======
-        attributes = '?module_id=' + text_type(self.item.location)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+        attributes = '?module_id=' + text_type(self.item.location) + '&course_id=' + self.course.id.to_deprecated_string()
         request = self.request_factory.get(reverse('get_students_problem_grades') + attributes)
 
         response = get_students_problem_grades(request)
@@ -368,11 +364,7 @@ class TestGetProblemGradeDistribution(SharedModuleStoreTestCase):
     def test_get_students_problem_grades_max(self):
 
         with patch('class_dashboard.dashboard_data.MAX_SCREEN_LIST_LENGTH', 2):
-<<<<<<< HEAD
-            attributes = '?module_id=' + self.item.location.to_deprecated_string() + '&course_id=' + self.course.id.to_deprecated_string()
-=======
-            attributes = '?module_id=' + text_type(self.item.location)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+            attributes = '?module_id=' + text_type(self.item.location) + '&course_id=' + self.course.id.to_deprecated_string()
             request = self.request_factory.get(reverse('get_students_problem_grades') + attributes)
 
             response = get_students_problem_grades(request)
@@ -386,11 +378,7 @@ class TestGetProblemGradeDistribution(SharedModuleStoreTestCase):
     def test_get_students_problem_grades_csv(self):
 
         tooltip = 'P1.2.1 Q1 - 3382 Students (100%: 1/1 questions)'
-<<<<<<< HEAD
-        attributes = '?module_id=' + self.item.location.to_deprecated_string() + '&course_id=' + self.course.id.to_deprecated_string() + '&tooltip=' + tooltip + '&csv=true'
-=======
-        attributes = '?module_id=' + text_type(self.item.location) + '&tooltip=' + tooltip + '&csv=true'
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+        attributes = '?module_id=' + text_type(self.item.location) + '&course_id=' + self.course.id.to_deprecated_string() + '&tooltip=' + tooltip + '&csv=true'
         request = self.request_factory.get(reverse('get_students_problem_grades') + attributes)
 
         response = get_students_problem_grades(request)
@@ -410,11 +398,7 @@ class TestGetProblemGradeDistribution(SharedModuleStoreTestCase):
 
     def test_get_students_opened_subsection(self):
 
-<<<<<<< HEAD
-        attributes = '?module_id=' + self.sub_section.location.to_deprecated_string() + '&course_id=' + self.course.id.to_deprecated_string()
-=======
-        attributes = '?module_id=' + text_type(self.item.location)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+        attributes = '?module_id=' + text_type(self.item.location) + '&course_id=' + self.course.id.to_deprecated_string()
         request = self.request_factory.get(reverse('get_students_opened_subsection') + attributes)
 
         response = get_students_opened_subsection(request)
@@ -427,11 +411,7 @@ class TestGetProblemGradeDistribution(SharedModuleStoreTestCase):
 
         with patch('class_dashboard.dashboard_data.MAX_SCREEN_LIST_LENGTH', 2):
 
-<<<<<<< HEAD
-            attributes = '?module_id=' + self.sub_section.location.to_deprecated_string() + '&course_id=' + self.course.id.to_deprecated_string()
-=======
-            attributes = '?module_id=' + text_type(self.item.location)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+            attributes = '?module_id=' + text_type(self.item.location) + '&course_id=' + self.course.id.to_deprecated_string()
             request = self.request_factory.get(reverse('get_students_opened_subsection') + attributes)
 
             response = get_students_opened_subsection(request)
@@ -445,11 +425,7 @@ class TestGetProblemGradeDistribution(SharedModuleStoreTestCase):
     def test_get_students_opened_subsection_csv(self):
 
         tooltip = '4162 students opened Subsection 5: Relational Algebra Exercises'
-<<<<<<< HEAD
-        attributes = '?module_id=' + self.sub_section.location.to_deprecated_string() + '&course_id=' + self.course.id.to_deprecated_string() + '&tooltip=' + tooltip + '&csv=true'
-=======
-        attributes = '?module_id=' + text_type(self.item.location) + '&tooltip=' + tooltip + '&csv=true'
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+        attributes = '?module_id=' + text_type(self.item.location) + '&course_id=' + self.course.id.to_deprecated_string() + '&tooltip=' + tooltip + '&csv=true'
         request = self.request_factory.get(reverse('get_students_opened_subsection') + attributes)
 
         response = get_students_opened_subsection(request)
