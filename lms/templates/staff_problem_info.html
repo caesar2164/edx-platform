@@ -69,21 +69,12 @@ ${block_content}
       </div>
       % if can_override_problem_score:
       <div>
-<<<<<<< HEAD
-        <label for="sd_fs_${location.name | h}">${_('Score (for override only)')}:</label>
-        <input type="text" tabindex="0" id="sd_fs_${location.name | h}" placeholder="0"/>
-        <label for="sd_fs_${location.name | h}"> / ${max_problem_score}</label>
-      </div>
-      % endif
-      <div data-location="${location | h}" data-location-name="${location.name | h}">
-=======
         <label for="sd_fs_${location.block_id | h}">${_('Score (for override only)')}:</label>
         <input type="text" tabindex="0" id="sd_fs_${location.block_id | h}" placeholder="0"/>
         <label for="sd_fs_${location.block_id | h}"> / ${max_problem_score}</label>
       </div>
       % endif
       <div data-location="${location | h}" data-location-name="${location.block_id | h}">
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         [
         % if can_reset_attempts:
         <button type="button" class="btn-link staff-debug-reset">${_('Reset Learner\'s Attempts to Zero')}</button>
@@ -96,12 +87,6 @@ ${block_content}
         |
         <button type="button" class="btn-link staff-debug-rescore-if-higher">${_('Rescore Only If Score Improves')}</button>
         |
-<<<<<<< HEAD
-        % endif
-        % if can_override_problem_score:
-        <button type="button" class="btn-link staff-debug-override-score">${_('Override Score')}</button>
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         % endif
         % if can_override_problem_score:
         <button type="button" class="btn-link staff-debug-override-score">${_('Override Score')}</button>
