@@ -430,11 +430,7 @@ class CourseDetailsViewTest(CourseTestCase, MilestonesTestCaseMixin):
             self.assertContains(response, "Course Duration")
             self.assertContains(response, "Course Description")
             self.assertContains(response, "Course Short Description")
-<<<<<<< HEAD
-            self.assertContains(response, "Course About Sidebar HTML")
-=======
             self.assertNotContains(response, "Course About Sidebar HTML")
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
             self.assertContains(response, "Course Overview")
             self.assertContains(response, "Course Introduction Video")
             self.assertContains(response, "Requirements")
