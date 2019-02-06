@@ -382,13 +382,7 @@ def export_status_handler(request, course_key_string):
                 'response-content-type': 'application/x-tgz'
             })
         else:
-<<<<<<< HEAD
-            # local file, serve from the authorization wrapper view
-            output_url = reverse_course_url('export_output_handler', course_key)
-
-=======
             output_url = artifact.file.storage.url(artifact.file.name)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     elif task_status.state in (UserTaskStatus.FAILED, UserTaskStatus.CANCELED):
         status = max(-(task_status.completed_steps + 1), -2)
         errors = UserTaskArtifact.objects.filter(status=task_status, name='Error')
