@@ -233,7 +233,6 @@
                 }
             ];
 
-<<<<<<< HEAD
             (function() {
                 // Using IIFE to keep relevant variable declarations here
                 var fullnameIndex, emailIndex, passwordIndex, basicFields;
@@ -266,7 +265,6 @@
                     basicFields.splice(passwordIndex, 1);
                 }
             })();
-=======
             // Add the extended profile fields
             additionalFields = aboutSectionsData[1];
             for (var field in extendedProfileFields) {  // eslint-disable-line guard-for-in, no-restricted-syntax, vars-on-top, max-len
@@ -336,7 +334,6 @@
                 };
                 aboutSectionsData.push(accountDeletionFields);
             }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
             // set TimeZoneField to listen to CountryField
 
