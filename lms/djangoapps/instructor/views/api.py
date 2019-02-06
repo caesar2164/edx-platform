@@ -78,11 +78,7 @@ from lms.djangoapps.instructor.enrollment import (
 from lms.djangoapps.instructor.views import INVOICE_KEY
 from lms.djangoapps.instructor.views.instructor_task_helpers import extract_email_features, extract_task_features
 from lms.djangoapps.instructor_task.api import submit_override_score
-<<<<<<< HEAD
-from lms.djangoapps.instructor_task.api_helper import AlreadyRunningError
-=======
 from lms.djangoapps.instructor_task.api_helper import AlreadyRunningError, QueueConnectionError
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from lms.djangoapps.instructor_task.models import ReportStore
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from openedx.core.djangoapps.course_groups.cohorts import is_course_cohorted
@@ -145,12 +141,9 @@ log = logging.getLogger(__name__)
 
 TASK_SUBMISSION_OK = 'created'
 
-<<<<<<< HEAD
-=======
 SUCCESS_MESSAGE_TEMPLATE = _("The {report_type} report is being created. "
                              "To view the status of the report, see Pending Tasks below.")
 
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 def common_exceptions_400(func):
     """
@@ -2145,11 +2138,7 @@ def rescore_problem(request, course_id):
 @require_POST
 @ensure_csrf_cookie
 @cache_control(no_cache=True, no_store=True, must_revalidate=True)
-<<<<<<< HEAD
-@require_level('instructor')
-=======
 @require_level('staff')
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 @require_post_params(problem_to_reset="problem urlname to reset", score='overriding score')
 @common_exceptions_400
 def override_problem_score(request, course_id):
@@ -2175,11 +2164,7 @@ def override_problem_score(request, course_id):
         return _create_error_response(request, "Unable to parse problem id {}.".format(problem_to_reset))
 
     # check the user's access to this specific problem
-<<<<<<< HEAD
-    if not has_access(request.user, "instructor", modulestore().get_item(usage_key)):
-=======
     if not has_access(request.user, "staff", modulestore().get_item(usage_key)):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         _create_error_response(request, "User {} does not have permission to override scores for problem {}.".format(
             request.user.id,
             problem_to_reset
@@ -2197,17 +2182,10 @@ def override_problem_score(request, course_id):
             score,
         )
     except NotImplementedError as exc:  # if we try to override the score of a non-scorable block, catch it here
-<<<<<<< HEAD
-        return _create_error_response(request, exc.message)
-
-    except ValueError as exc:
-        return _create_error_response(request, exc.message)
-=======
         return _create_error_response(request, text_type(exc))
 
     except ValueError as exc:
         return _create_error_response(request, text_type(exc))
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
     response_payload['task'] = TASK_SUBMISSION_OK
     return JsonResponse(response_payload)
