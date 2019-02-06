@@ -33,14 +33,8 @@ log = logging.getLogger(__name__)
 def index(request):
     """
     Redirects to main page -- info page if user authenticated, or marketing if not
-<<<<<<< HEAD
-    '''
-
-    if UserProfile.has_registered(request.user):
-=======
     """
-    if request.user.is_authenticated:
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+    if UserProfile.has_registered(request.user):
         # Only redirect to dashboard if user has
         # courses in his/her dashboard. Otherwise UX is a bit cryptic.
         # In this case, we want to have the user stay on a course catalog
