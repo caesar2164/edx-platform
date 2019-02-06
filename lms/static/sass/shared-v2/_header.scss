@@ -117,7 +117,6 @@
         &:hover {
           border-bottom: 4px solid $border-color;
         }
-<<<<<<< HEAD
 
         .user {
             @include float(right);
@@ -161,30 +160,21 @@
                 }
             }
         }
-=======
       }
 
       .active {
         border-bottom: 4px solid $black-t3 !important;
       }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     }
   }
 
-<<<<<<< HEAD
-    // Style the courseware's slim version of the header
-    &.slim {
-        .nav-global {
-            display: none;
-        }
-        .wrapper-header {
-            height: 60px;
-=======
   // Style the courseware's slim version of the header
   &.slim {
+    .nav-global {
+        display: none;
+    }
     .wrapper-header {
       height: 60px;
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
       .logo img {
         margin-top: 4px;
