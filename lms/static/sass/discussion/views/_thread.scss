@@ -56,19 +56,11 @@
 .discussion-response {
   min-height: ($baseline*5);
 
-<<<<<<< HEAD
-    .response-header-content {
-      display: inline-block;
-      vertical-align: top;
-      width: flex-grid(10,12);
-    }
-=======
   .response-header-content {
     display: inline-block;
     vertical-align: top;
     width: flex-grid(11,12);
   }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
   .response-header-actions {
     @include float(right);
