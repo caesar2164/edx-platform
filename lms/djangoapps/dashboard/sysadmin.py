@@ -29,11 +29,8 @@ from django.views.decorators.http import condition
 from django.views.generic.base import TemplateView
 from opaque_keys.edx.keys import CourseKey
 from path import Path as path
-<<<<<<< HEAD
 import sys
-=======
 from six import text_type
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 import dashboard.git_import as git_import
 import track.views
