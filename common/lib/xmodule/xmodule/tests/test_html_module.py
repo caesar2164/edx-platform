@@ -1,9 +1,5 @@
 import unittest
-<<<<<<< HEAD
-
 from mock import patch
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from mock import Mock
 import ddt
 
