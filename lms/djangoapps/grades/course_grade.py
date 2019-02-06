@@ -20,11 +20,7 @@ class CourseGradeBase(object):
     """
     Base class for Course Grades.
     """
-<<<<<<< HEAD:lms/djangoapps/grades/new/course_grade.py
-    def __init__(self, user, course_data, percent=0, letter_grade=None, passed=False, force_update_subsections=False):
-=======
     def __init__(self, user, course_data, percent=0.0, letter_grade=None, passed=False, force_update_subsections=False):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e:lms/djangoapps/grades/course_grade.py
         self.user = user
         self.course_data = course_data
 
@@ -281,19 +277,11 @@ class CourseGrade(CourseGradeBase):
                     return True
         return False
 
-<<<<<<< HEAD:lms/djangoapps/grades/new/course_grade.py
-    def _get_subsection_grade(self, subsection):
-        # Pass read_only here so the subsection grades can be persisted in bulk at the end.
-        if self.force_update_subsections:
-            return self._subsection_grade_factory.update(subsection)
-        else:
-=======
     def _get_subsection_grade(self, subsection, force_update_subsections=False):
         if self.force_update_subsections:
             return self._subsection_grade_factory.update(subsection, force_update_subsections=force_update_subsections)
         else:
             # Pass read_only here so the subsection grades can be persisted in bulk at the end.
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e:lms/djangoapps/grades/course_grade.py
             return self._subsection_grade_factory.create(subsection, read_only=True)
 
     @staticmethod
