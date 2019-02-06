@@ -11,19 +11,11 @@ COURSE_ID_PATTERN = settings.COURSE_ID_PATTERN
 
 urlpatterns = [
     # Json request data for metrics for entire course
-<<<<<<< HEAD
     url(r'^{}/all_sequential_open_distrib/(?P<enrollment>\d+)$'.format(settings.COURSE_ID_PATTERN),
-        'class_dashboard.views.all_sequential_open_distrib', name="all_sequential_open_distrib"),
-
-    url(r'^{}/all_problem_grade_distribution/(?P<enrollment>\d+)$'.format(settings.COURSE_ID_PATTERN),
-        'class_dashboard.views.all_problem_grade_distribution', name="all_problem_grade_distribution"),
-=======
-    url(r'^{}/all_sequential_open_distrib$'.format(settings.COURSE_ID_PATTERN),
         class_dashboard.views.all_sequential_open_distrib, name="all_sequential_open_distrib"),
 
-    url(r'^{}/all_problem_grade_distribution$'.format(settings.COURSE_ID_PATTERN),
+    url(r'^{}/all_problem_grade_distribution/(?P<enrollment>\d+)$'.format(settings.COURSE_ID_PATTERN),
         class_dashboard.views.all_problem_grade_distribution, name="all_problem_grade_distribution"),
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
     # Json request data for metrics for particular section
     url(r'^{}/problem_grade_distribution/(?P<section>\d+)$'.format(settings.COURSE_ID_PATTERN),
