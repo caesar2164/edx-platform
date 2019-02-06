@@ -66,12 +66,8 @@ from openedx.core.lib.url_utils import quote_slashes
 from openedx.features.course_experience import COURSE_OUTLINE_PAGE_FLAG, UNIFIED_COURSE_TAB_FLAG
 from openedx.features.enterprise_support.tests.mixins.enterprise import EnterpriseTestConsentRequired
 from student.models import CourseEnrollment
-<<<<<<< HEAD
 from student.tests.factories import NonRegisteredUserFactory
-from student.tests.factories import AdminFactory, CourseEnrollmentFactory, UserFactory
-=======
 from student.tests.factories import TEST_PASSWORD, AdminFactory, CourseEnrollmentFactory, UserFactory
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from util.tests.test_date_utils import fake_pgettext, fake_ugettext
 from util.url import reload_django_url_config
 from util.views import ensure_valid_course_key
@@ -1131,7 +1127,6 @@ class TestAccordionDueDate(BaseDueDateTests):
         super(TestAccordionDueDate, self).test_format_none()
 
 
-<<<<<<< HEAD
 # Stanford Sneak Peek tests
 @attr(shard=1)
 class TestNonRegisteredUser(TestCase):
@@ -1154,10 +1149,7 @@ class TestNonRegisteredUser(TestCase):
 # / Stanford Sneak Peek tests
 
 
-@attr(shard=1)
-=======
 @attr(shard=5)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 class StartDateTests(ModuleStoreTestCase):
     """
     Test that start dates are properly localized and displayed on the student
