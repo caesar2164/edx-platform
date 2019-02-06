@@ -150,6 +150,7 @@ class CourseEnrollmentTests(SharedModuleStoreTestCase):
 
         enrolled_users = CourseEnrollment.objects.enrollment_counts(self.course.id)
         self.assertDictEqual(enrolled_users, {'audit': 1, 'total': 1})
+
     @skip_unless_lms
     # NOTE: We mute the post_save signal to prevent Schedules from being created for new enrollments
     @factory.django.mute_signals(signals.post_save)
