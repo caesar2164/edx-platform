@@ -54,48 +54,16 @@ class PasswordResetFormNoActive(PasswordResetForm):
             raise forms.ValidationError(self.error_messages['unusable'])
         return email
 
-<<<<<<< HEAD
-    def save(
-            self,
-            subject_template_name='registration/password_reset_subject.txt',
-            email_template_name='registration/password_reset_email.html',
-            use_https=False,
-            token_generator=default_token_generator,
-            from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL),
-            request=None
-    ):
-=======
     def save(self,  # pylint: disable=arguments-differ
              use_https=False,
              token_generator=default_token_generator,
              request=None,
              **_kwargs):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         """
         Generates a one-use only link for resetting password and sends to the
         user.
         """
         for user in self.users_cache:
-<<<<<<< HEAD
-            site_name = configuration_helpers.get_value(
-                'SITE_NAME',
-                settings.SITE_NAME
-            )
-            context = {
-                'email': user.email,
-                'site_name': site_name,
-                'uid': int_to_base36(user.id),
-                'user': user,
-                'token': token_generator.make_token(user),
-                'protocol': 'https' if use_https else 'http',
-                'platform_name': configuration_helpers.get_value('platform_name', settings.PLATFORM_NAME)
-            }
-            subject = loader.render_to_string(subject_template_name, context)
-            # Email subject *must not* contain newlines
-            subject = subject.replace('\n', '')
-            email = loader.render_to_string(email_template_name, context)
-            send_mail(subject, email, from_email, [user.email])
-=======
             site = get_current_site()
             message_context = get_base_template_context(site)
 
@@ -119,7 +87,6 @@ class PasswordResetFormNoActive(PasswordResetForm):
                 user_context=message_context,
             )
             ace.send(msg)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 
 class TrueCheckbox(widgets.CheckboxInput):
