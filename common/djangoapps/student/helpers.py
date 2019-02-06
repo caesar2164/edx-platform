@@ -25,10 +25,6 @@ from pytz import UTC
 from six import iteritems, text_type
 import third_party_auth
 from course_modes.models import CourseMode
-<<<<<<< HEAD
-from lms.djangoapps.verify_student.models import SoftwareSecurePhotoVerification, VerificationDeadline
-from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
-=======
 from lms.djangoapps.certificates.api import (
     get_certificate_url,
     has_html_certificates_enabled
@@ -44,7 +40,6 @@ from lms.djangoapps.verify_student.utils import is_verification_expiring_soon, v
 from openedx.core.djangoapps.certificates.api import certificates_viewable_for_course
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.djangoapps.theming import helpers as theming_helpers
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from openedx.core.djangoapps.theming.helpers import get_themes
 from student.models import (
     LinkedInAddToProfileConfiguration,
