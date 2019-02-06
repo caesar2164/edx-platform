@@ -781,11 +781,7 @@ class PasswordResetViewTest(UserAPITestCase):
 
 @ddt.ddt
 @skip_unless_lms
-<<<<<<< HEAD
-class RegistrationViewValidationErrorTest(ThirdPartyAuthTestMixin, ApiTestCase):
-=======
 class RegistrationViewValidationErrorTest(ThirdPartyAuthTestMixin, UserAPITestCase, RetirementTestCase):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     """
     Tests for catching duplicate email and username validation errors within
     the registration end-points of the User API.
@@ -808,8 +804,6 @@ class RegistrationViewValidationErrorTest(ThirdPartyAuthTestMixin, UserAPITestCa
         super(RegistrationViewValidationErrorTest, self).setUp()
         self.url = reverse("user_api_registration")
 
-<<<<<<< HEAD
-=======
     def _retireRequestUser(self):
         """
         Very basic user retirement initiation, logic copied form DeactivateLogoutView.  This only lands the user in
@@ -903,7 +897,6 @@ class RegistrationViewValidationErrorTest(ThirdPartyAuthTestMixin, UserAPITestCa
             }
         )
 
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     @mock.patch('openedx.core.djangoapps.user_api.views.check_account_exists')
     def test_register_duplicate_email_validation_error(self, dummy_check_account_exists):
         dummy_check_account_exists.return_value = []
