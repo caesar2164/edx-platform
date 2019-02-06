@@ -21,22 +21,10 @@ COVERAGE_REQ_FILE = 'requirements/edx/coverage.txt'
 # If you make any changes to this list you also need to make
 # a corresponding change to circle.yml, which is how the python
 # prerequisites are installed for builds on circleci.com
-<<<<<<< HEAD
-PYTHON_REQ_FILES = [
-    'requirements/edx/pre.txt',
-    'requirements/edx/github.txt',
-    'requirements/edx/stanford.txt',
-    'requirements/edx/local.txt',
-    'requirements/edx/base.txt',
-    'requirements/edx/paver.txt',
-    'requirements/edx/post.txt',
-]
-=======
 if 'TOXENV' in os.environ:
     PYTHON_REQ_FILES = ['requirements/edx/testing.txt']
 else:
     PYTHON_REQ_FILES = ['requirements/edx/development.txt']
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 # Developers can have private requirements, for local copies of github repos,
 # or favorite debugging tools, etc.
