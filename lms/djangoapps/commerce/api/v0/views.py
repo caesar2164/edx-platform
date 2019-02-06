@@ -144,83 +144,10 @@ class BasketsView(APIView):
             notify_enrollment_by_email(courses.get_course(course_key), user, request)
             self._handle_marketing_opt_in(request, course_key, user)
             return DetailResponse(msg)
-<<<<<<< HEAD
-
-        # Setup the API
-
-        try:
-            api_session = requests.Session()
-            api = ecommerce_api_client(user, session=api_session)
-        except ValueError:
-            self._enroll(course_key, user)
-            notify_enrollment_by_email(courses.get_course(course_key), user, request)
-            msg = Messages.NO_ECOM_API.format(username=user.username, course_id=unicode(course_key))
-            log.debug(msg)
-            return DetailResponse(msg)
-
-        response = None
-
-        # Make the API call
-        try:
-            # Pass along Sailthru campaign id
-            self._add_request_cookie_to_api_session(api_session, request, SAILTHRU_CAMPAIGN_COOKIE)
-
-            # Pass along UTM tracking info
-            utm_cookie_name = RegistrationCookieConfiguration.current().utm_cookie_name
-            self._add_request_cookie_to_api_session(api_session, request, utm_cookie_name)
-
-            response_data = api.baskets.post({
-                'products': [{'sku': default_enrollment_mode.sku}],
-                'checkout': True,
-            })
-
-            payment_data = response_data["payment_data"]
-            if payment_data:
-                # Pass data to the client to begin the payment flow.
-                response = JsonResponse(payment_data)
-            elif response_data['order']:
-                # The order was completed immediately because there is no charge.
-                msg = Messages.ORDER_COMPLETED.format(order_number=response_data['order']['number'])
-                log.debug(msg)
-                response = DetailResponse(msg)
-            else:
-                msg = u'Unexpected response from basket endpoint.'
-                log.error(
-                    msg + u' Could not enroll user %(username)s in course %(course_id)s.',
-                    {'username': user.id, 'course_id': course_id},
-                )
-                raise InvalidResponseError(msg)
-        except (exceptions.SlumberBaseException, exceptions.Timeout) as ex:
-            log.exception(ex.message)
-            return InternalRequestErrorResponse(ex.message)
-        finally:
-            audit_log(
-                'checkout_requested',
-                course_id=course_id,
-                mode=default_enrollment_mode.slug,
-                processor_name=None,
-                user_id=user.id
-            )
-
-        self._handle_marketing_opt_in(request, course_key, user)
-        return response
-
-    def _add_request_cookie_to_api_session(self, server_session, request, cookie_name):
-        """ Add cookie from user request into server session """
-        user_cookie = None
-        if cookie_name:
-            user_cookie = request.COOKIES.get(cookie_name)
-            if user_cookie:
-                server_cookie = {cookie_name: user_cookie}
-                if server_session.cookies:
-                    requests.utils.add_dict_to_cookiejar(server_session.cookies, server_cookie)
-                else:
-                    server_session.cookies = requests.utils.cookiejar_from_dict(server_cookie)
-=======
         else:
+            notify_enrollment_by_email(courses.get_course(course_key), user, request)
             msg = Messages.NO_DEFAULT_ENROLLMENT_MODE.format(course_id=course_id)
             return DetailResponse(msg, status=HTTP_406_NOT_ACCEPTABLE)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 
 class BasketOrderView(APIView):
