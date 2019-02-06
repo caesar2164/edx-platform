@@ -108,37 +108,6 @@ class CourseUpdatesFragmentView(EdxFragmentView):
         return Fragment(html)
 
     @classmethod
-<<<<<<< HEAD
-    def get_ordered_updates(self, request, course):
-        """
-        Returns any course updates in reverse chronological order.
-        """
-        info_module = get_course_info_section_module(request, request.user, course, 'updates')
-
-        updates = info_module.items if info_module else []
-        info_block = getattr(info_module, '_xmodule', info_module) if info_module else None
-        ordered_updates = [update for update in updates if update.get('status') == self.STATUS_VISIBLE]
-        ordered_updates.sort(
-            key=lambda item: (self.safe_parse_date(item['date']), item['id']),
-            reverse=True
-        )
-        keyword_context = {
-            'username': request.user.username,
-            'user_id': request.user.id,
-            'name': request.user.profile.name,
-            'course_title': course.display_name,
-            'course_id': course.id,
-            'course_start_date': get_default_time_display(course.start),
-            'course_end_date': get_default_time_display(course.end),
-        }
-        for update in ordered_updates:
-            update['content'] = info_block.system.replace_urls(update['content'])
-            update['content'] = info_block.system.substitute_keywords_with_data(update['content'], keyword_context)
-        return ordered_updates
-
-    @classmethod
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     def has_updates(self, request, course):
         return len(get_ordered_updates(request, course)) > 0
 
@@ -151,7 +120,6 @@ class CourseUpdatesFragmentView(EdxFragmentView):
         """
         info_module = get_course_info_section_module(request, request.user, course, 'updates')
         info_block = getattr(info_module, '_xmodule', info_module)
-<<<<<<< HEAD
         update_content = info_block.system.replace_urls(info_module.data) if info_module else ''
         keyword_context = {
             'username': request.user.username,
@@ -164,16 +132,3 @@ class CourseUpdatesFragmentView(EdxFragmentView):
         }
         update_content = info_block.system.substitute_keywords_with_data(update_content, keyword_context)
         return update_content
-
-    @staticmethod
-    def safe_parse_date(date):
-        """
-        Since this is used solely for ordering purposes, use today's date as a default
-        """
-        try:
-            return datetime.strptime(date, '%B %d, %Y')
-        except ValueError:  # occurs for ill-formatted date values
-            return datetime.today()
-=======
-        return info_block.system.replace_urls(info_module.data) if info_module else ''
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
