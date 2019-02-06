@@ -16,19 +16,7 @@ def run():
     NOTE: DO **NOT** add additional code to this method or this file! The Platform Team
           is moving all startup code to more standard locations using Django best practices.
     """
-<<<<<<< HEAD
-    Add extra mimetypes. Used in xblock_resource.
-
-    If you add a mimetype here, be sure to also add it in lms/startup.py.
-    """
+    django.setup()
     import mimetypes
-
-    mimetypes.add_type('application/vnd.ms-fontobject', '.eot')
-    mimetypes.add_type('application/x-font-opentype', '.otf')
-    mimetypes.add_type('application/x-font-ttf', '.ttf')
-    mimetypes.add_type('application/font-woff', '.woff')
     for extension, mimetype in settings.EXTRA_MIMETYPES.iteritems():
         mimetypes.add_type(mimetype, extension)
-=======
-    django.setup()
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
