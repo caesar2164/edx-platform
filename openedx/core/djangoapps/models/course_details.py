@@ -29,13 +29,10 @@ ABOUT_ATTRIBUTES = [
     'entrance_exam_id',
     'entrance_exam_minimum_score_pct',
     'about_sidebar_html',
-<<<<<<< HEAD
     'pre_enrollment_email_subject',
     'post_enrollment_email_subject',
     'pre_enrollment_email',
     'post_enrollment_email',
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 ]
 
 
@@ -61,15 +58,11 @@ class CourseDetails(object):
         self.description = ""
         self.short_description = ""
         self.overview = ""  # html to render as the overview
-<<<<<<< HEAD
-        self.about_sidebar_html = ''
         self.pre_enrollment_email = render_to_string('emails/default_pre_enrollment_message.txt', {})
         self.post_enrollment_email = render_to_string('emails/default_post_enrollment_message.txt', {})
         self.pre_enrollment_email_subject = "Thanks for Enrolling in {}".format(self.course_id)
         self.post_enrollment_email_subject = "Thanks for Enrolling in {}".format(self.course_id)
-=======
         self.about_sidebar_html = ""
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         self.intro_video = None  # a video pointer
         self.effort = None  # hours/week
         self.license = "all-rights-reserved"  # default course license is all rights reserved
