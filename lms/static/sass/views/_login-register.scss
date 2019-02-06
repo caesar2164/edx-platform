@@ -161,18 +161,6 @@
     }
   }
 
-<<<<<<< HEAD
-.login-register {
-    $grid-columns: 12;
-    background: $white;
-    min-height: 100%;
-    margin: 0 auto;
-    padding-left: ($baseline/2);
-    padding-right: ($baseline/2);
-    $third-party-button-height: ($baseline*1.75);
-    display: block;
-    max-width: 500px;
-=======
   .section-title {
     position: relative;
     margin: $baseline 0 ($baseline/2);
@@ -192,7 +180,6 @@
         content: '';
         z-index: 5;
       }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
       .text {
         position: relative;
