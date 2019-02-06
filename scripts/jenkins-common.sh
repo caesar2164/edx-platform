@@ -5,11 +5,7 @@ set -e
 source $HOME/jenkins_env
 
 NODE_ENV_DIR=$HOME/nenv
-<<<<<<< HEAD
-NODE_VERSION=6.11.1
-=======
 NODE_VERSION=8.9.3
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 NODE_INSTALL_COMMAND="nodeenv --node=$NODE_VERSION --prebuilt $NODE_ENV_DIR --force"
 
