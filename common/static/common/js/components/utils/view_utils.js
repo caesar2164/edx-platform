@@ -316,28 +316,7 @@
             };
 
             return {
-<<<<<<< HEAD
-                'keywordValidator': keywordValidator,
-                'toggleExpandCollapse': toggleExpandCollapse,
-                'showLoadingIndicator': showLoadingIndicator,
-                'hideLoadingIndicator': hideLoadingIndicator,
-                'confirmThenRunOperation': confirmThenRunOperation,
-                'runOperationShowingMessage': runOperationShowingMessage,
-                'withDisabledElement': withDisabledElement,
-                'disableElementWhileRunning': disableElementWhileRunning,
-                'deleteNotificationHandler': deleteNotificationHandler,
-                'setScrollTop': setScrollTop,
-                'getScrollOffset': getScrollOffset,
-                'setScrollOffset': setScrollOffset,
-                'redirect': redirect,
-                'reload': reload,
-                'hasChangedAttributes': hasChangedAttributes,
-                'validateRequiredField': validateRequiredField,
-                'validateURLItemEncoding': validateURLItemEncoding,
-                'validateTotalKeyLength': validateTotalKeyLength,
-                'checkTotalKeyLengthViolations': checkTotalKeyLengthViolations,
-                'loadJavaScript': loadJavaScript
-=======
+                keywordValidator: keywordValidator,
                 toggleExpandCollapse: toggleExpandCollapse,
                 showLoadingIndicator: showLoadingIndicator,
                 hideLoadingIndicator: hideLoadingIndicator,
@@ -357,7 +336,6 @@
                 validateTotalKeyLength: validateTotalKeyLength,
                 checkTotalKeyLengthViolations: checkTotalKeyLengthViolations,
                 loadJavaScript: loadJavaScript
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
             };
         });
 }).call(this, define || RequireJS.define, require || RequireJS.require);
