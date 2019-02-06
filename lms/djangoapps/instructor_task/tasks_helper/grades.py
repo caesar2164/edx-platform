@@ -299,13 +299,8 @@ class CourseGradeReport(object):
             args = [iter(iterable)] * chunk_size
             return izip_longest(*args, fillvalue=fillvalue)
 
-<<<<<<< HEAD
         users = CourseEnrollment.objects.users_enrolled_in(context.course_id, include_inactive=True, exclude_fake_email=True)
-        users = users.select_related('profile__allow_certificate')
-=======
-        users = CourseEnrollment.objects.users_enrolled_in(context.course_id, include_inactive=True)
         users = users.select_related('profile')
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         return grouper(users)
 
     def _user_grades(self, course_grade, context):
@@ -682,13 +677,6 @@ class ProblemResponses(object):
         problem_location = task_input.get('problem_location')
 
         # Compute result table and format it
-<<<<<<< HEAD
-        problem_location = task_input.get('problem_location')
-        student_data = list_problem_responses(course_id, problem_location)
-        features = ['username', 'state']
-        from openedx.stanford.lms.djangoapps.instructor.views.tools import parse_student_data
-        header, rows = parse_student_data(student_data)
-=======
         student_data, student_data_keys = cls._build_student_data(
             user_id=task_input.get('user_id'),
             course_key=course_id,
@@ -699,8 +687,7 @@ class ProblemResponses(object):
             for key in student_data_keys:
                 data.setdefault(key, '')
 
-        header, rows = format_dictlist(student_data, student_data_keys)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+        header, rows = parse_student_data(student_data)
 
         task_progress.attempted = task_progress.succeeded = len(rows)
         task_progress.skipped = task_progress.total - task_progress.attempted
