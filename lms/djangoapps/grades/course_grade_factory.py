@@ -70,23 +70,11 @@ class CourseGradeFactory(object):
         or course_key should be provided.
         """
         course_data = CourseData(user, course, collected_block_structure, course_structure, course_key)
-<<<<<<< HEAD:lms/djangoapps/grades/new/course_grade_factory.py
-        return self._update(user, course_data, read_only=False, force_update_subsections=force_update_subsections)
-
-    @contextmanager
-    def _course_transaction(self, course_key):
-        """
-        Provides a transaction context in which GradeResults are created.
-        """
-        yield
-        VisibleBlocks.clear_cache(course_key)
-=======
         return self._update(
             user,
             course_data,
             force_update_subsections=force_update_subsections
         )
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e:lms/djangoapps/grades/course_grade_factory.py
 
     def iter(
             self,
@@ -129,11 +117,7 @@ class CourseGradeFactory(object):
             if force_update:
                 kwargs['force_update_subsections'] = True
 
-<<<<<<< HEAD:lms/djangoapps/grades/new/course_grade_factory.py
-            method = CourseGradeFactory().update if force_update else CourseGradeFactory().create
-=======
             method = CourseGradeFactory().update if force_update else CourseGradeFactory().read
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e:lms/djangoapps/grades/course_grade_factory.py
             course_grade = method(**kwargs)
             return self.GradeResult(user, course_grade, None)
         except Exception as exc:  # pylint: disable=broad-except
@@ -176,26 +160,17 @@ class CourseGradeFactory(object):
         )
 
     @staticmethod
-<<<<<<< HEAD:lms/djangoapps/grades/new/course_grade_factory.py
-    def _update(user, course_data, read_only, force_update_subsections=False):
-=======
     def _update(user, course_data, force_update_subsections=False):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e:lms/djangoapps/grades/course_grade_factory.py
         """
         Computes, saves, and returns a CourseGrade object for the
         given user and course.
         Sends a COURSE_GRADE_CHANGED signal to listeners and a
         COURSE_GRADE_NOW_PASSED if learner has passed course.
         """
-<<<<<<< HEAD:lms/djangoapps/grades/new/course_grade_factory.py
-        course_grade = CourseGrade(user, course_data, force_update_subsections=force_update_subsections)
-        course_grade.update()
-=======
         should_persist = should_persist_grades(course_data.course_key)
 
         if should_persist and force_update_subsections:
             prefetch(user, course_data.course_key)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e:lms/djangoapps/grades/course_grade_factory.py
 
         course_grade = CourseGrade(
             user,
