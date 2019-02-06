@@ -1,9 +1,6 @@
 """Tests for the resubmit_error_certificates management command. """
 import ddt
-<<<<<<< HEAD
-=======
 import pytest
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from django.core.management import call_command
 from django.core.management.base import CommandError
 from django.test.utils import override_settings
@@ -15,15 +12,10 @@ from six import text_type
 from badges.events.course_complete import get_completion_badge
 from badges.models import BadgeAssertion
 from badges.tests.factories import BadgeAssertionFactory, CourseCompleteImageConfigurationFactory
-<<<<<<< HEAD
-from certificates.management.commands import regenerate_user, resubmit_error_certificates, ungenerated_certs
-from certificates.management.commands import update_cert_status
-from certificates.models import CertificateStatuses, GeneratedCertificate
-=======
 from lms.djangoapps.certificates.models import CertificateStatuses, GeneratedCertificate
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from course_modes.models import CourseMode
 from lms.djangoapps.grades.tests.utils import mock_passing_grade
+from certificates.management.commands import update_cert_status
 from student.tests.factories import CourseEnrollmentFactory, UserFactory
 from xmodule.modulestore.tests.django_utils import ModuleStoreTestCase
 from xmodule.modulestore.tests.factories import CourseFactory, ItemFactory, check_mongo_calls
@@ -176,11 +168,7 @@ class RegenerateCertificatesTest(CertificateManagementTest):
     @ddt.data(True, False)
     @override_settings(CERT_QUEUE='test-queue')
     @patch.dict('django.conf.settings.FEATURES', {'ENABLE_OPENBADGES': True})
-<<<<<<< HEAD
-    @patch('certificates.api.XQueueCertInterface', spec=True)
-=======
     @patch('lms.djangoapps.certificates.api.XQueueCertInterface', spec=True)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     def test_clear_badge(self, issue_badges, xqueue):
         """
         Given that I have a user with a badge
@@ -195,18 +183,10 @@ class RegenerateCertificatesTest(CertificateManagementTest):
         self.assertTrue(BadgeAssertion.objects.filter(user=self.user, badge_class=badge_class))
         self.course.issue_badges = issue_badges
         self.store.update_item(self.course, None)
-<<<<<<< HEAD
-        self._run_command(
-            username=self.user.email, course=unicode(key), noop=False, insecure=False, template_file=None,
-            designation=None,
-            grade_value=None
-        )
-=======
 
         args = '-u {} -c {}'.format(self.user.email, text_type(key))
         call_command(self.command, *args.split(' '))
 
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         xqueue.return_value.regen_cert.assert_called_with(
             self.user,
             key,
@@ -230,18 +210,10 @@ class RegenerateCertificatesTest(CertificateManagementTest):
         """
         key = self.course.location.course_key
         self._create_cert(key, self.user, CertificateStatuses.downloadable)
-<<<<<<< HEAD
-        self._run_command(
-            username=self.user.email, course=unicode(key), noop=False, insecure=True, template_file=None,
-            designation=None,
-            grade_value=None
-        )
-=======
 
         args = '-u {} -c {} --insecure'.format(self.user.email, text_type(key))
         call_command(self.command, *args.split(' '))
 
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         certificate = GeneratedCertificate.eligible_certificates.get(
             user=self.user,
             course_id=key
