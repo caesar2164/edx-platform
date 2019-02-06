@@ -195,16 +195,10 @@ def inline_discussion(request, course_key, discussion_id):
     Renders JSON for DiscussionModules
     """
 
-<<<<<<< HEAD
-    course = get_course_with_access(request.user, 'load_forum', course_key, check_if_enrolled=True)
-    cc_user = cc.User.from_django_user(request.user)
-    user_info = cc_user.to_dict()
-=======
     with function_trace('get_course_and_user_info'):
-        course = get_course_with_access(request.user, 'load', course_key, check_if_enrolled=True)
+        course = get_course_with_access(request.user, 'load_forum', course_key, check_if_enrolled=True)
         cc_user = cc.User.from_django_user(request.user)
         user_info = cc_user.to_dict()
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
     try:
         with function_trace('get_threads'):
@@ -509,7 +503,7 @@ def _create_discussion_board_context(request, base_context, thread=None):
 def create_user_profile_context(request, course_key, user_id):
     """ Generate a context dictionary for the user profile. """
     user = cc.User.from_django_user(request.user)
-    course = get_course_with_access(request.user, 'load', course_key, check_if_enrolled=True)
+    course = get_course_with_access(request.user, 'load_forum', course_key, check_if_enrolled=True)
 
     # If user is not enrolled in the course, do not proceed.
     django_user = User.objects.get(id=user_id)
@@ -577,12 +571,6 @@ def user_profile(request, course_key, user_id):
     Renders a response to display the user profile page (shown after clicking
     on a post author's username).
     """
-<<<<<<< HEAD
-    user = cc.User.from_django_user(request.user)
-    course = get_course_with_access(request.user, 'load_forum', course_key, check_if_enrolled=True)
-
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     try:
         context = create_user_profile_context(request, course_key, user_id)
         if request.is_ajax():
