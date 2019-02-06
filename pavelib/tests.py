@@ -217,16 +217,7 @@ def test_lib(options, passthrough_options):
         dest='disable_migrations',
         help="Create tables directly from apps' models. Can also be used by exporting DISABLE_MIGRATIONS=1."
     ),
-<<<<<<< HEAD
-    ('processes=', 'p', 'number of processes to use running tests'),
-    ('cov_args=', None, 'deprecated in favor of cov-args'),
-    make_option(
-        '-e', '--extra_args', default='',
-        help='deprecated, pass extra options directly in the paver commandline'
-    ),
-    ("fail_fast", None, "deprecated in favor of fail-fast"),
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+    make_option('-p', '--processes', dest='processes', default=0, help='number of processes to use running tests'),
 ])
 @PassthroughTask
 @timed
@@ -255,15 +246,7 @@ def test_python(options, passthrough_options):
     make_option("--verbose", action="store_const", const=2, dest="verbosity"),
     make_option("-q", "--quiet", action="store_const", const=0, dest="verbosity"),
     make_option("-v", "--verbosity", action="count", dest="verbosity", default=1),
-<<<<<<< HEAD
-    ('processes=', 'p', 'number of processes to use running tests'),
-    ('cov_args=', None, 'deprecated in favor of cov-args'),
-    make_option(
-        '-e', '--extra_args', default='',
-        help='deprecated, pass extra options directly in the paver commandline'
-    ),
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+    make_option('-p', '--processes', dest='processes', default=0, help='number of processes to use running tests'),
 ])
 @PassthroughTask
 @timed
