@@ -7,17 +7,11 @@ import crum
 import datetime
 
 from babel.dates import format_timedelta
-<<<<<<< HEAD
-from django.conf import settings
-from django.core.urlresolvers import reverse
-from django.utils.translation import ugettext as _
-=======
 
 from django.conf import settings
 from django.urls import reverse
 from django.utils.formats import date_format
 from django.utils.functional import cached_property
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from django.utils.translation import get_language, to_locale, ugettext_lazy
 from django.utils.translation import ugettext as _
 from lazy import lazy
@@ -281,14 +275,10 @@ class CourseEndDate(DateSummary):
 
     @property
     def description(self):
-<<<<<<< HEAD
         # Stanford is short circuiting the description because we don't care for this text
         if settings.HIDE_COURSE_INFO_CERTS_TEXT:
             return ''
-        if datetime.now(utc) <= self.date:
-=======
         if self.current_time <= self.date:
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
             mode, is_active = CourseEnrollment.enrollment_mode_for_user(self.user, self.course_id)
             if is_active and CourseMode.is_eligible_for_certificate(mode):
                 return _('To earn a certificate, you must complete all requirements before this date.')
