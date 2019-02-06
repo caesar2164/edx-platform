@@ -19,16 +19,11 @@ html.video-fullscreen {
   @extend %ui-print-excluded;
 
   margin: ($baseline/2) ($baseline/4) 0 0;
-<<<<<<< HEAD
-  float: right;
-  overflow: hidden;
-=======
   display: none;
 
   @include media-breakpoint-up(md) {
     display: block;
   }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
   &.studio-view {
     margin: 0;
@@ -586,12 +581,6 @@ html.video-fullscreen {
         padding: 0 0 15px;
       }
 
-<<<<<<< HEAD
-      .vert .is-hidden {
-          display: none;
-          border-bottom: 0px;
-          margin-bottom: 0px;
-=======
       .vert > .xblock-student_view.is-hidden {
         display: none;
         border-bottom: 0;
@@ -602,7 +591,6 @@ html.video-fullscreen {
         > .xblock-student_view {
           padding: 0 !important;
         }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
       }
     }
 
@@ -781,16 +769,9 @@ h4.problem-feedback-label{
  */
 
 .CodeMirror {
-<<<<<<< HEAD
-
-    .CodeMirror-linenumber.CodeMirror-gutter-elt {
-        color: $gray-d3 !important;
-    }
-=======
   .CodeMirror-linenumber.CodeMirror-gutter-elt {
     color: $gray-d3 !important;
   }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 }
 
 @import '../stanford/course/_sneakpeek_courseware.scss';
