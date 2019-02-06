@@ -157,13 +157,7 @@ $light-border: 1px solid $gray-l5;
   button[type="submit"] {
     @include float(right);
     @include border-radius(3px);
-<<<<<<< HEAD
     @extend .btn-brand;
-=======
-
-    @extend %t-copy-lead2;
-
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     display: inline-block;
     box-shadow: 0 1px 0 0 $blue2 inset;
     border: 1px solid $blue2;
