@@ -5,18 +5,11 @@ import logging
 import ddt
 from django.conf import settings
 from django.contrib.sessions.middleware import SessionMiddleware
-<<<<<<< HEAD
-from django.core.urlresolvers import reverse
-from django.test import TestCase
-from django.test.client import RequestFactory
-from django.test.utils import override_settings
-=======
 from django.urls import reverse
 from django.test import TestCase
 from django.test.client import RequestFactory
 from django.test.utils import override_settings
 from django.utils import http
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from mock import patch
 from testfixtures import LogCapture
 
@@ -81,11 +74,7 @@ class TestLoginHelper(TestCase):
         req = self.request.get(reverse("login") + "?next={url}".format(url=url), HTTP_HOST=host)
         req.META["HTTP_ACCEPT"] = "text/html"  # pylint: disable=no-member
         next_page = get_next_url_for_login_page(req)
-<<<<<<< HEAD
-        self.assertEqual(next_page, u'/dashboard')
-=======
         self.assertEqual(next_page, expected_url)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
     @patch('student.helpers.third_party_auth.pipeline.get')
     @ddt.data(
