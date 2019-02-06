@@ -23,10 +23,6 @@ from six import text_type
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.exceptions import InvalidScopeError
-<<<<<<< HEAD
-from xblock.fragment import Fragment
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from xblock.scorable import ScorableXBlockMixin
 
 from xmodule.seq_module import SequenceModule
