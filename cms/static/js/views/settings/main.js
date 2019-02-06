@@ -18,10 +18,6 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    'change select': 'updateModel',
                    'click .remove-course-introduction-video': 'removeVideo',
                    'focus #course-overview': 'codeMirrorize',
-<<<<<<< HEAD
-
-                   // Stanford event definitions
-                   'focus #course-about-sidebar-html' : "codeMirrorize",
                    'click #enable-enrollment-email' : "toggleEnrollmentEmails",
                    'focus #pre-enrollment-email' : "codeMirrorize",
                    'focus #post-enrollment-email' : "codeMirrorize",
@@ -29,11 +25,7 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    'click #test_email_post': "sendTestEmail",
                    'click #fill_default_email_pre': "showDefaultTemplate",
                    'click #fill_default_email_post': "showDefaultTemplate",
-                   // / Stanford event definitions
-
-=======
                    'focus #course-about-sidebar-html': 'codeMirrorize',
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                    'mouseover .timezone': 'updateTime',
         // would love to move to a general superclass, but event hashes don't inherit in backbone :-(
                    'focus :input': 'inputFocus',
