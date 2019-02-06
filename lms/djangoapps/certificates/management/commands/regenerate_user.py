@@ -8,7 +8,6 @@ from django.core.management.base import BaseCommand
 from opaque_keys.edx.keys import CourseKey
 from six import text_type
 
-from badges.utils import badges_enabled
 from badges.events.course_complete import get_completion_badge
 from badges.utils import badges_enabled
 from lms.djangoapps.certificates.api import regenerate_user_certificates
@@ -28,49 +27,6 @@ class Command(BaseCommand):
 
     help = """Put a request on the queue to recreate the certificate for a particular user in a particular course."""
 
-<<<<<<< HEAD
-    option_list = BaseCommand.option_list + (
-        make_option('-n', '--noop',
-                    action='store_true',
-                    dest='noop',
-                    default=False,
-                    help="Don't grade or add certificate requests to the queue"),
-        make_option('--insecure',
-                    action='store_true',
-                    dest='insecure',
-                    default=False,
-                    help="Don't use https for the callback url to the LMS, useful in http test environments"),
-        make_option('-c', '--course',
-                    metavar='COURSE_ID',
-                    dest='course',
-                    default=False,
-                    help='The course id (e.g., mit/6-002x/circuits-and-electronics) for which the student named in'
-                         '<username> should be graded'),
-        make_option('-u', '--user',
-                    metavar='USERNAME',
-                    dest='username',
-                    default=False,
-                    help='The username or email address for whom grading and certification should be requested'),
-        make_option('-G', '--grade',
-                    metavar='GRADE',
-                    dest='grade_value',
-                    default=None,
-                    help='The grade string, such as "Distinction", which should be passed to the certificate agent'),
-        make_option('-T', '--template',
-                    metavar='TEMPLATE',
-                    dest='template_file',
-                    default=None,
-                    help='The template file used to render this certificate, like "QMSE01-distinction.pdf"'),
-        make_option(
-            '-d',
-            '--designation',
-            metavar='DESIGNATION',
-            dest='designation',
-            default=None,
-            help='Professional designation to pass to certificate generator',
-        ),
-    )
-=======
     def add_arguments(self, parser):
         parser.add_argument('-n', '--noop',
                             action='store_true',
@@ -101,7 +57,14 @@ class Command(BaseCommand):
                             dest='template_file',
                             default=None,
                             help='The template file used to render this certificate, like "QMSE01-distinction.pdf"')
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+        parser.add_argument(
+            '-d',
+            '--designation',
+            metavar='DESIGNATION',
+            dest='designation',
+            default=None,
+            help='Professional designation to pass to certificate generator',
+        )
 
     def handle(self, *args, **options):
 
