@@ -403,11 +403,7 @@ def activate_account(activation_key):
         registration.activate()
 
 
-<<<<<<< HEAD
-@intercept_errors(UserAPIInternalError, ignore_errors=[UserAPIRequestError])
-=======
 @helpers.intercept_errors(errors.UserAPIInternalError, ignore_errors=[errors.UserAPIRequestError])
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 def request_password_change(email, is_secure):
     """Email a single-use link for performing a password reset.
 
@@ -437,12 +433,8 @@ def request_password_change(email, is_secure):
         # and email it to the user.
         form.save(
             from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL),
-<<<<<<< HEAD
-            use_https=is_secure
-=======
             use_https=is_secure,
             request=get_current_request(),
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         )
     else:
         # No user with the provided email address exists.
