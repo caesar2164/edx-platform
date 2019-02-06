@@ -36,11 +36,8 @@ from django.db.models.signals import post_save, pre_save
 from django.db.utils import ProgrammingError
 from django.dispatch import receiver
 from django.utils import timezone
-<<<<<<< HEAD
 from django.utils.crypto import get_random_string
-=======
 from django.utils.functional import cached_property
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext_noop
 from django_countries.fields import CountryField
