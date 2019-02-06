@@ -53,10 +53,6 @@
 
     <%= context.fields %>
 
-<<<<<<< HEAD
-    <div id="register-extra"></div>
-    <button type="submit" class="action action-primary action-update js-register register-button"><%- gettext("Create account") %></button>
-=======
     <div class="form-field checkbox-optional_fields_toggle">
         <input type="checkbox" id="toggle_optional_fields" class="input-block checkbox"">
         <label for="toggle_optional_fields">
@@ -66,9 +62,9 @@
         </label>
     </div>
 
+    <div id="register-extra"></div>
 
     <button type="submit" class="action action-primary action-update js-register register-button">
     	<% if ( context.registerFormSubmitButtonText ) { %><%- context.registerFormSubmitButtonText %><% } else { %><%- gettext("Create Account") %><% } %>
     </button>
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 </form>
