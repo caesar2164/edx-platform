@@ -54,11 +54,6 @@ from student_account import views as student_account_views
 from track import views as track_views
 from util import views as util_views
 
-<<<<<<< HEAD
-
-# Uncomment the next two lines to enable the admin:
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 if settings.DEBUG or settings.FEATURES.get('ENABLE_DJANGO_ADMIN_SITE'):
     django_autodiscover()
     admin.site.site_header = _('LMS Administration')
@@ -1079,10 +1074,6 @@ if settings.FEATURES.get('ENABLE_FINANCIAL_ASSISTANCE_FORM'):
             courseware_views.financial_assistance_request,
             name='submit_financial_assistance_request'
         )
-<<<<<<< HEAD
-    )
-urlpatterns += (url(r'', include('openedx.stanford.lms.urls')),)
-=======
     ]
 
 # Branch.io Text Me The App
@@ -1096,5 +1087,5 @@ if settings.FEATURES.get('ENABLE_API_DOCS'):
         url(r'^api-docs/$', get_swagger_view(title='LMS API')),
     ]
 
+urlpatterns += (url(r'', include('openedx.stanford.lms.urls')),)
 urlpatterns.extend(plugin_urls.get_patterns(plugin_constants.ProjectType.LMS))
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
