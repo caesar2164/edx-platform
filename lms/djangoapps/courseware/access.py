@@ -392,12 +392,7 @@ def _has_access_course(user, action, courselike):
 
     checkers = {
         'load': can_load,
-<<<<<<< HEAD
         'load_forum': can_load_forum,
-        'view_courseware_with_prerequisites':
-            lambda: _can_view_courseware_with_prerequisites(user, courselike),
-=======
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         'load_mobile': lambda: can_load() and _can_load_course_on_mobile(user, courselike),
         'enroll': can_enroll,
         'see_exists': see_exists,
