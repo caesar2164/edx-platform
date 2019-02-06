@@ -7,11 +7,7 @@
 
 $(function () {
 
-<<<<<<< HEAD
-  d3.json("${reverse('all_sequential_open_distrib', kwargs=dict(course_id=course_id.to_deprecated_string(), enrollment=enrollment))}", function(error, json) {
-=======
-  d3.json("${reverse('all_sequential_open_distrib', kwargs=dict(course_id=text_type(course_id)))}", function(error, json) {
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+  d3.json("${reverse('all_sequential_open_distrib', kwargs=dict(course_id=text_type(course_id), enrollment=enrollment))}", function(error, json) {
     var section, paramOpened, barGraphOpened, error;
     var i, curr_id;
     var errorMessage = gettext('Unable to retrieve data, please try again later.');
@@ -58,11 +54,7 @@ $(function () {
     }
   });
 
-<<<<<<< HEAD
-  d3.json("${reverse('all_problem_grade_distribution', kwargs=dict(course_id=course_id.to_deprecated_string(), enrollment=enrollment))}", function(error, json) {
-=======
-  d3.json("${reverse('all_problem_grade_distribution', kwargs=dict(course_id=text_type(course_id)))}", function(error, json) {
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+  d3.json("${reverse('all_problem_grade_distribution', kwargs=dict(course_id=text_type(course_id), enrollment=enrollment))}", function(error, json) {
     var section, paramGrade, barGraphGrade, error;
     var i, curr_id;
     var errorMessage = gettext('Unable to retrieve data, please try again later.');
