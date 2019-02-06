@@ -37,6 +37,15 @@ def get_ordered_updates(request, course):
         key=lambda item: (safe_parse_date(item['date']), item['id']),
         reverse=True
     )
+    keyword_context = {
+        'username': request.user.username,
+        'user_id': request.user.id,
+        'name': request.user.profile.name,
+        'course_title': course.display_name,
+        'course_id': course.id,
+        'course_start_date': get_default_time_display(course.start),
+        'course_end_date': get_default_time_display(course.end),
+    }
     for update in ordered_updates:
         update['content'] = info_block.system.replace_urls(update['content'])
         update['content'] = info_block.system.substitute_keywords_with_data(update['content'], keyword_context)
