@@ -29,12 +29,9 @@ from opaque_keys.edx.django.models import CourseKeyField
 from six import text_type
 
 from openedx.core.storage import get_storage
-
-<<<<<<< HEAD
 from openedx.stanford.lms.djangoapps.instructor_task.models import DeleteFileMixin
-=======
+
 logger = logging.getLogger(__name__)
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 # define custom states used by InstructorTask
 QUEUING = 'QUEUING'
