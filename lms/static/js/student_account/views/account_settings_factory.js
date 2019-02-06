@@ -87,7 +87,7 @@
                 model: userAccountModel,
                 title: gettext('Full Name'),
                 valueAttribute: 'name',
-                helpMessage: gettext('The name that is used for ID verification and that appears on your certificates.'),  // eslint-disable-line max-len,
+                helpMessage: gettext('The name that appears on your Statements of Accomplishment. Other learners never see your full name.'),  // eslint-disable-line max-len,
                 persistChanges: true
             };
             if (syncLearnerProfileData && enterpriseReadonlyAccountFields.fields.indexOf('name') !== -1) {
@@ -142,21 +142,7 @@
                                 )
                             })
                         },
-<<<<<<< HEAD
-                        {
-                            view: new AccountSettingsFieldViews.TextFieldView({
-                                model: userAccountModel,
-                                title: gettext('Full Name'),
-                                valueAttribute: 'name',
-                                helpMessage: gettext(
-                                    'The name that appears on your Statements of Accomplishment. Other learners never see your full name.'  // eslint-disable-line max-len
-                                ),
-                                persistChanges: true
-                            })
-                        },
-=======
                         fullnameFieldView,
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                         emailFieldView,
                         {
                             view: new AccountSettingsFieldViews.PasswordFieldView({
