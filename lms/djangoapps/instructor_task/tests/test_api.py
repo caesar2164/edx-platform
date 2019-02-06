@@ -168,15 +168,9 @@ class InstructorTaskModuleSubmitTest(InstructorTaskModuleTestCase):
             'rescore_problem_if_higher',
             {'student': True, 'only_if_higher': True},
         ),
-<<<<<<< HEAD
-        (submit_reset_problem_attempts_in_entrance_exam, 'reset_problem_attempts', {'student': True}),
-        (submit_delete_entrance_exam_state_for_student, 'delete_problem_state', {'student': True}),
-        (submit_override_score, 'override_problem_score', {'student': True, 'score': 0})
-=======
         (normalize_repr(submit_reset_problem_attempts_in_entrance_exam), 'reset_problem_attempts', {'student': True}),
         (normalize_repr(submit_delete_entrance_exam_state_for_student), 'delete_problem_state', {'student': True}),
         (normalize_repr(submit_override_score), 'override_problem_score', {'student': True, 'score': 0})
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     )
     @ddt.unpack
     def test_submit_task(self, task_function, expected_task_type, params=None):
