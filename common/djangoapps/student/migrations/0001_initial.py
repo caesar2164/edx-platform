@@ -229,12 +229,8 @@ class Migration(migrations.Migration):
                 ('allow_certificate', models.BooleanField(default=1)),
                 ('bio', models.CharField(max_length=3000, null=True, blank=True)),
                 ('profile_image_uploaded_at', models.DateTimeField(null=True)),
-<<<<<<< HEAD
-                ('user', models.OneToOneField(related_name='profile', to=settings.AUTH_USER_MODEL)),
-                ('nonregistered', models.BooleanField(default=False)),
-=======
                 ('user', models.OneToOneField(related_name='profile', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
+                ('nonregistered', models.BooleanField(default=False)),
             ],
             options={
                 'db_table': 'auth_userprofile',
