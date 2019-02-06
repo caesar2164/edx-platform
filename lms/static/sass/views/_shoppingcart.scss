@@ -626,12 +626,7 @@ $light-border: 1px solid $gray-l5;
       }
 
       span {
-<<<<<<< HEAD
         @include margin-right($baseline/4);
-=======
-        @include margin-right(-$baseline);
-
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         display: inline-block;
         padding: ($baseline*0.45) 0;
 
