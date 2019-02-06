@@ -447,34 +447,21 @@ class CourseTabList(List):
         return next((tab for tab in tab_list if tab.tab_id == tab_id), None)
 
     @staticmethod
-<<<<<<< HEAD
     def iterate_displayable(
         course,
         user=None,
         inline_collections=True,
-        settings=None,
-        is_user_authenticated=True,
-        is_user_staff=True,
-        is_user_enrolled=False,
+        include_hidden=False,
         is_user_sneakpeek=False,
     ):
-=======
-    def iterate_displayable(course, user=None, inline_collections=True, include_hidden=False):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         """
         Generator method for iterating through all tabs that can be displayed for the given course and
         the given user with the provided access settings.
         """
         for tab in course.tabs:
-<<<<<<< HEAD
-            if (
-                tab.is_enabled(course, user=user) and
-                (not (user and tab.is_hidden)) and
-                (not is_user_sneakpeek or tab.is_visible_to_sneak_peek)
-            ):
-=======
+            if is_user_sneakpeek and not tab.is_visible_to_sneak_peek:
+                continue
             if tab.is_enabled(course, user=user) and (include_hidden or not (user and tab.is_hidden)):
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                 if tab.is_collection:
                     # If rendering inline that add each item in the collection,
                     # else just show the tab itself as long as it is not empty.
