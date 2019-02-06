@@ -7,12 +7,7 @@ so that we can run the lettuce acceptance tests.
 # want to import all variables from base settings files
 # pylint: disable=wildcard-import, unused-wildcard-import
 
-<<<<<<< HEAD
 from openedx.stanford.cms.envs.test import *
-from lms.envs.sauce import *
-=======
-from .test import *
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 # You need to start the server in debug mode,
 # otherwise the browser will not render the pages correctly
