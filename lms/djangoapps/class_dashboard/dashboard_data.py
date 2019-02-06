@@ -7,14 +7,10 @@ import json
 from django.conf import settings
 from django.db.models import Count
 from django.utils.translation import ugettext as _
-<<<<<<< HEAD
-from opaque_keys.edx.locations import Location
 from opaque_keys.edx.locations import SlashSeparatedCourseKey
-=======
 
 from opaque_keys.edx.locator import BlockUsageLocator
 from six import text_type
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
 from analyticsclient.client import Client
 from analyticsclient.exceptions import NotFoundError
@@ -66,35 +62,6 @@ def get_problem_grade_distribution(course_id, enrollment):
     non_student_list = get_non_student_list(course_id)
 
     prob_grade_distrib = {}
-<<<<<<< HEAD
-    total_student_count = defaultdict(int)
-
-    if enrollment <= settings.MAX_ENROLLEES_FOR_METRICS_USING_DB or not settings.ANALYTICS_DATA_URL:
-        # Aggregate query on studentmodule table for grade data for all problems in course
-        queryset = models.StudentModule.objects.filter(
-            course_id__exact=course_id,
-            grade__isnull=False,
-            module_type__in=PROB_TYPE_LIST,
-        ).exclude(student_id__in=non_student_list).values('module_state_key', 'grade', 'max_grade').annotate(count_grade=Count('grade'))
-
-        # Loop through resultset building data for each problem
-        for row in queryset:
-            curr_problem = course_id.make_usage_key_from_deprecated_string(row['module_state_key'])
-
-            # Build set of grade distributions for each problem that has student responses
-            if curr_problem in prob_grade_distrib:
-                prob_grade_distrib[curr_problem]['grade_distrib'].append((row['grade'], row['count_grade']))
-
-                if ((prob_grade_distrib[curr_problem]['max_grade'] != row['max_grade']) and
-                        (prob_grade_distrib[curr_problem]['max_grade'] < row['max_grade'])):
-                    prob_grade_distrib[curr_problem]['max_grade'] = row['max_grade']
-
-            else:
-                prob_grade_distrib[curr_problem] = {
-                    'max_grade': row['max_grade'],
-                    'grade_distrib': [(row['grade'], row['count_grade']), ],
-                }
-=======
     total_student_count = {}
 
     # Loop through resultset building data for each problem
@@ -114,7 +81,6 @@ def get_problem_grade_distribution(course_id, enrollment):
                 'max_grade': row['max_grade'],
                 'grade_distrib': [(row['grade'], row['count_grade'])]
             }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
             # Build set of total students attempting each problem
             total_student_count[curr_problem] += row['count_grade']
@@ -171,41 +137,11 @@ def get_sequential_open_distrib(course_id, enrollment):
 
     non_student_list = get_non_student_list(course_id)
 
-<<<<<<< HEAD
-    if enrollment <= settings.MAX_ENROLLEES_FOR_METRICS_USING_DB or not settings.ANALYTICS_DATA_URL:
-        # Aggregate query on studentmodule table for "opening a subsection" data
-        queryset = models.StudentModule.objects.filter(
-            course_id__exact=course_id,
-            module_type__exact='sequential',
-        ).exclude(student_id__in=non_student_list).values('module_state_key').annotate(count_sequential=Count('module_state_key'))
-
-        for row in queryset:
-            module_id = course_id.make_usage_key_from_deprecated_string(row['module_state_key'])
-            sequential_open_distrib[module_id] = row['count_sequential']
-    else:
-        # Retrieve course object down to subsection
-        course = modulestore().get_course(course_id, depth=2)
-
-        # Connect to analytics data client
-        client = Client(base_url=settings.ANALYTICS_DATA_URL, auth_token=settings.ANALYTICS_DATA_TOKEN)
-
-        for section in course.get_children():
-            for subsection in section.get_children():
-                module = client.modules(course_id, subsection.location)
-
-                try:
-                    sequential_open = module.sequential_open_distribution()
-                except NotFoundError:
-                    pass
-                else:
-                    sequential_open_distrib[subsection.location] = sequential_open[0]['count']
-=======
     # Build set of "opened" data for each subsection that has "opened" data
     sequential_open_distrib = {}
     for row in db_query:
         row_loc = row['module_state_key'].map_into_course(course_id)
         sequential_open_distrib[row_loc] = row['count_sequential']
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
     return sequential_open_distrib
 
@@ -231,29 +167,6 @@ def get_problem_set_grade_distrib(course_id, problem_set, enrollment):
 
     prob_grade_distrib = {}
 
-<<<<<<< HEAD
-    if enrollment <= settings.MAX_ENROLLEES_FOR_METRICS_USING_DB or not settings.ANALYTICS_DATA_URL:
-        # Aggregate query on studentmodule table for grade data for set of problems in course
-        queryset = models.StudentModule.objects.filter(
-            course_id__exact=course_id,
-            grade__isnull=False,
-            module_type__in=PROB_TYPE_LIST,
-            module_state_key__in=problem_set,
-        ).exclude(student_id__in=non_student_list).values(
-            'module_state_key',
-            'grade',
-            'max_grade',
-        ).annotate(count_grade=Count('grade')).order_by('module_state_key', 'grade')
-
-        # Loop through resultset building data for each problem
-        for row in queryset:
-            problem_id = course_id.make_usage_key_from_deprecated_string(row['module_state_key'])
-            if problem_id not in prob_grade_distrib:
-                prob_grade_distrib[problem_id] = {
-                    'max_grade': 0,
-                    'grade_distrib': [],
-                }
-=======
     # Loop through resultset building data for each problem
     for row in db_query:
         row_loc = row['module_state_key'].map_into_course(course_id)
@@ -262,7 +175,6 @@ def get_problem_set_grade_distrib(course_id, problem_set, enrollment):
                 'max_grade': 0,
                 'grade_distrib': [],
             }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 
             curr_grade_distrib = prob_grade_distrib[problem_id]
             curr_grade_distrib['grade_distrib'].append((row['grade'], row['count_grade']))
@@ -396,19 +308,7 @@ def get_d3_problem_grade_distrib(course_id, enrollment):
                 for child in unit.get_children():
 
                     # Student data is at the problem level
-<<<<<<< HEAD
                     if child.location.category in PROB_TYPE_LIST:
-                        problem, c_problem = construct_problem_data(
-                            prob_grade_distrib,
-                            total_student_count,
-                            c_subsection,
-                            c_unit,
-                            c_problem,
-                            child
-                        )
-=======
-                    if child.location.block_type == 'problem':
-                        c_problem += 1
                         stack_data = []
 
                         # Construct label to display for this problem
@@ -459,7 +359,6 @@ def get_d3_problem_grade_distrib(course_id, enrollment):
                             'xValue': label,
                             'stackData': stack_data,
                         }
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                         data.append(problem)
                     elif child.location.category in settings.TYPES_WITH_CHILD_PROBLEMS_LIST:
                         for library_problem in child.get_children():
@@ -581,11 +480,7 @@ def get_d3_section_grade_distrib(course_id, section, enrollment):
             c_unit += 1
             c_problem = 0
             for child in unit.get_children():
-<<<<<<< HEAD
                 if child.location.category in PROB_TYPE_LIST:
-=======
-                if child.location.block_type == 'problem':
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                     c_problem += 1
                     problem_set.append(child.location)
                     problem_info[child.location] = {
@@ -680,11 +575,7 @@ def get_array_section_has_problem(course_id):
         for subsection in section.get_children():
             for unit in subsection.get_children():
                 for child in unit.get_children():
-<<<<<<< HEAD
                     if child.location.category in PROB_TYPE_LIST:
-=======
-                    if child.location.block_type == 'problem':
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                         b_section_has_problem[i] = True
                         break  # out of child loop
                     elif child.location.category in settings.TYPES_WITH_CHILD_PROBLEMS_LIST:
@@ -710,17 +601,13 @@ def get_students_opened_subsection(request, csv=False):
     If 'csv' is True, returns a header array, and an array of arrays in the format:
     student names, usernames for CSV download.
     """
-<<<<<<< HEAD
-=======
     module_state_key = BlockUsageLocator.from_string(request.GET.get('module_id'))
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     csv = request.GET.get('csv')
     course_id = request.GET.get('course_id')
     course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
     module_state_key = course_key.make_usage_key_from_deprecated_string(request.GET.get('module_id'))
 
     non_student_list = get_non_student_list(course_key)
-
     # Query for "opened a subsection" students
     students = models.StudentModule.objects.select_related('student').filter(
         module_state_key__exact=module_state_key,
@@ -769,14 +656,10 @@ def get_students_problem_grades(request, csv=False):
     If 'csv' is True, returns a header array, and an array of arrays in the format:
     student names, usernames, grades, percents for CSV download.
     """
-<<<<<<< HEAD
-=======
     module_state_key = BlockUsageLocator.from_string(request.GET.get('module_id'))
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     csv = request.GET.get('csv')
     course_id = request.GET.get('course_id')
     course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
-    module_state_key = course_key.make_usage_key_from_deprecated_string(request.GET.get('module_id'))
 
     non_student_list = get_non_student_list(course_key)
 
