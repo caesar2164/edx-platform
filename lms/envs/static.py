@@ -12,12 +12,8 @@ sessions. Assumes structure:
 # want to import all variables from base settings files
 # pylint: disable=wildcard-import, unused-wildcard-import
 
-<<<<<<< HEAD
 from openedx.stanford.lms.envs.common import *
-=======
-from .common import *
 from openedx.core.lib.derived import derive_settings
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from openedx.core.lib.logsettings import get_logger_config
 
 STATIC_GRAB = True
