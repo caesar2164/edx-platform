@@ -207,10 +207,7 @@ class ResetPasswordTests(EventTestMixin, CacheIsolationTestCase):
                     '/password_reset/', {'email': self.user.email}
                 )
                 req.user = self.user
-<<<<<<< HEAD
-=======
                 req.site = Mock(domain='example.com')
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                 password_reset(req)
                 _, msg, _, _ = send_email.call_args[0]
 
