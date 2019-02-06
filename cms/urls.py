@@ -97,36 +97,6 @@ urlpatterns = [
         name='checklists_handler'),
 
     url(r'^course_notifications/{}/(?P<action_state_id>\d+)?$'.format(settings.COURSE_KEY_PATTERN),
-<<<<<<< HEAD
-        'course_notifications_handler'),
-    url(r'^course_rerun/{}$'.format(settings.COURSE_KEY_PATTERN), 'course_rerun_handler', name='course_rerun_handler'),
-    url(r'^container/{}$'.format(settings.USAGE_KEY_PATTERN), 'container_handler'),
-    url(r'^orphan/{}$'.format(settings.COURSE_KEY_PATTERN), 'orphan_handler'),
-    url(r'^assets/{}/{}?$'.format(settings.COURSE_KEY_PATTERN, settings.ASSET_KEY_PATTERN), 'assets_handler'),
-    url(r'^import/{}$'.format(COURSELIKE_KEY_PATTERN), 'import_handler'),
-    url(r'^import_status/{}/(?P<filename>.+)$'.format(COURSELIKE_KEY_PATTERN), 'import_status_handler'),
-    # rest api for course import/export
-    url(
-        r'^api/courses/',
-        include('cms.djangoapps.contentstore.api.urls', namespace='courses_api')
-    ),
-    url(r'^export/{}$'.format(COURSELIKE_KEY_PATTERN), 'export_handler'),
-    url(r'^export_output/{}$'.format(COURSELIKE_KEY_PATTERN), 'export_output_handler'),
-    url(r'^export_status/{}$'.format(COURSELIKE_KEY_PATTERN), 'export_status_handler'),
-    url(r'^xblock/outline/{}$'.format(settings.USAGE_KEY_PATTERN), 'xblock_outline_handler'),
-    url(r'^xblock/container/{}$'.format(settings.USAGE_KEY_PATTERN), 'xblock_container_handler'),
-    url(r'^xblock/{}/(?P<view_name>[^/]+)$'.format(settings.USAGE_KEY_PATTERN), 'xblock_view_handler'),
-    url(r'^xblock/{}?$'.format(settings.USAGE_KEY_PATTERN), 'xblock_handler'),
-    url(r'^tabs/{}$'.format(settings.COURSE_KEY_PATTERN), 'tabs_handler'),
-    url(r'^settings/details/{}$'.format(settings.COURSE_KEY_PATTERN), 'settings_handler'),
-    url(r'^settings/grading/{}(/)?(?P<grader_index>\d+)?$'.format(settings.COURSE_KEY_PATTERN), 'grading_handler'),
-    url(r'^settings/advanced/{}$'.format(settings.COURSE_KEY_PATTERN), 'advanced_settings_handler'),
-    url(r'^textbooks/{}$'.format(settings.COURSE_KEY_PATTERN), 'textbooks_list_handler'),
-    url(r'^textbooks/{}/(?P<textbook_id>\d[^/]*)$'.format(settings.COURSE_KEY_PATTERN), 'textbooks_detail_handler'),
-    url(r'^videos/{}(?:/(?P<edx_video_id>[-\w]+))?$'.format(settings.COURSE_KEY_PATTERN), 'videos_handler'),
-    url(r'^video_encodings_download/{}$'.format(settings.COURSE_KEY_PATTERN), 'video_encodings_download'),
-    url(r'^group_configurations/{}$'.format(settings.COURSE_KEY_PATTERN), 'group_configurations_list_handler'),
-=======
         contentstore.views.course_notifications_handler,
         name='course_notifications_handler'),
     url(r'^course_rerun/{}$'.format(settings.COURSE_KEY_PATTERN), contentstore.views.course_rerun_handler,
@@ -190,7 +160,6 @@ urlpatterns = [
     url(r'^group_configurations/{}$'.format(settings.COURSE_KEY_PATTERN),
         contentstore.views.group_configurations_list_handler,
         name='group_configurations_list_handler'),
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     url(r'^group_configurations/{}/(?P<group_configuration_id>\d+)(/)?(?P<group_id>\d+)?$'.format(
         settings.COURSE_KEY_PATTERN), contentstore.views.group_configurations_detail_handler,
         name='group_configurations_detail_handler'),
@@ -297,11 +266,8 @@ handler500 = contentstore.views.render_500
 urlpatterns += [
     url(r'^404$', handler404),
     url(r'^500$', handler500),
-<<<<<<< HEAD
-)
-urlpatterns += (url(r'', include('openedx.stanford.cms.urls')),)
-=======
 ]
+urlpatterns += [url(r'', include('openedx.stanford.cms.urls')),]
 
 if settings.FEATURES.get('ENABLE_API_DOCS'):
     urlpatterns += [
@@ -310,4 +276,3 @@ if settings.FEATURES.get('ENABLE_API_DOCS'):
 
 from openedx.core.djangoapps.plugins import constants as plugin_constants, plugin_urls
 urlpatterns.extend(plugin_urls.get_patterns(plugin_constants.ProjectType.CMS))
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
