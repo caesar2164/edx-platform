@@ -389,11 +389,7 @@ def get_feedback_form_context(request):
 
     context["additional_info"] = {}
 
-<<<<<<< HEAD
     if UserProfile.has_registered(request.user):
-=======
-    if request.user.is_authenticated:
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         context["realname"] = request.user.profile.name
         context["email"] = request.user.email
         context["additional_info"]["username"] = request.user.username
@@ -437,11 +433,7 @@ def submit_feedback(request):
 
     required_fields = ["subject", "details"]
 
-<<<<<<< HEAD
     if not UserProfile.has_registered(request.user):
-=======
-    if not request.user.is_authenticated:
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         required_fields += ["name", "email"]
 
     required_field_errs = {
@@ -454,11 +446,7 @@ def submit_feedback(request):
         if field not in request.POST or not request.POST[field]:
             return build_error_response(400, field, required_field_errs[field])
 
-<<<<<<< HEAD
     if not UserProfile.has_registered(request.user):
-=======
-    if not request.user.is_authenticated:
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
         try:
             validate_email(request.POST["email"])
         except ValidationError:
