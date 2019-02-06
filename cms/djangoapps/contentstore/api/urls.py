@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-""" Course Import API URLs. """
-from django.conf import settings
-from django.conf.urls import (
-    patterns,
-    url,
-)
-
-from cms.djangoapps.contentstore.api import views
-
-urlpatterns = patterns(
-    '',
-    url(
-        r'^v0/import/{course_id}/$'.format(
-            course_id=settings.COURSE_ID_PATTERN,
-        ),
-        views.CourseImportView.as_view(), name='course_import'
-    ),
-)
-=======
 """ Course API URLs. """
 from django.conf import settings
 from django.conf.urls import url
@@ -32,4 +12,3 @@ urlpatterns = [
     url(r'^v1/quality/{course_id}/$'.format(course_id=settings.COURSE_ID_PATTERN,),
         course_quality.CourseQualityView.as_view(), name='course_quality'),
 ]
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
