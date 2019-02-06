@@ -66,12 +66,9 @@ from lms.envs.common import (
     MEDIA_ROOT,
     MEDIA_URL,
 
-<<<<<<< HEAD
-=======
     # Lazy Gettext
     _,
 
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     # Django REST framework configuration
     REST_FRAMEWORK,
 
