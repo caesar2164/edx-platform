@@ -29,18 +29,12 @@ from django_comment_client.tests.utils import (
     topic_name_to_id
 )
 from django_comment_client.utils import strip_none
-<<<<<<< HEAD
-from student.models import UserProfile
-from django_comment_common.models import CourseDiscussionSettings, ForumsConfig
-from django_comment_common.utils import ThreadContext
-=======
 from django_comment_common.models import (
     CourseDiscussionSettings,
     ForumsConfig,
     FORUM_ROLE_STUDENT,
 )
 from django_comment_common.utils import ThreadContext, seed_permissions_roles
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
 from lms.djangoapps.courseware.exceptions import CourseAccessRedirect
 from lms.djangoapps.discussion import views
 from lms.djangoapps.discussion.views import _get_discussion_default_topic_id
@@ -54,6 +48,7 @@ from openedx.core.djangoapps.request_cache.middleware import RequestCache
 from openedx.core.djangoapps.util.testing import ContentGroupTestCase
 from openedx.core.djangoapps.waffle_utils.testutils import WAFFLE_TABLES
 from openedx.features.enterprise_support.tests.mixins.enterprise import EnterpriseTestConsentRequired
+from student.models import UserProfile
 from student.roles import CourseStaffRole, UserBasedRole
 from student.tests.factories import CourseEnrollmentFactory, UserFactory
 from util.testing import EventTestMixin, UrlResetMixin
