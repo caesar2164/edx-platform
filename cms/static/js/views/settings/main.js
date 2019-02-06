@@ -222,40 +222,6 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    return this;
                },
                fieldToSelectorMap: {
-<<<<<<< HEAD
-                   'language': 'course-language',
-                   'start_date': 'course-start',
-                   'end_date': 'course-end',
-                   'enrollment_start': 'enrollment-start',
-                   'enrollment_end': 'enrollment-end',
-                   'overview': 'course-overview',
-                   'title': 'course-title',
-                   'subtitle': 'course-subtitle',
-                   'duration': 'course-duration',
-                   'description': 'course-description',
-                   // Stanford field selectors
-                   'about_sidebar_html' : 'course-about-sidebar-html',
-                   'pre_enrollment_email' : 'pre-enrollment-email',
-                   'post_enrollment_email' : 'post-enrollment-email',
-                   'enable_enrollment_email': 'enable-enrollment-email',
-                   'pre_enrollment_email_subject' :'pre-enrollment-email-subject',
-                   'post_enrollment_email_subject':'post-enrollment-email-subject',
-                   'enable_default_enrollment_email':'enable-default-enrollment-email',
-                    // / Stanford field selectors
-                   'short_description': 'course-short-description',
-                   'intro_video': 'course-introduction-video',
-                   'effort': 'course-effort',
-                   'course_image_asset_path': 'course-image-url',
-                   'banner_image_asset_path': 'banner-image-url',
-                   'video_thumbnail_image_asset_path': 'video-thumbnail-image-url',
-                   'pre_requisite_courses': 'pre-requisite-course',
-                   'entrance_exam_enabled': 'entrance-exam-enabled',
-                   'entrance_exam_minimum_score_pct': 'entrance-exam-minimum-score-pct',
-                   'course_settings_learning_fields': 'course-settings-learning-fields',
-                   'add_course_learning_info': 'add-course-learning-info',
-                   'add_course_instructor_info': 'add-course-instructor-info',
-                   'course_learning_info': 'course-learning-info'
-=======
                    language: 'course-language',
                    start_date: 'course-start',
                    end_date: 'course-end',
@@ -281,7 +247,6 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    add_course_learning_info: 'add-course-learning-info',
                    add_course_instructor_info: 'add-course-instructor-info',
                    course_learning_info: 'course-learning-info'
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
                },
 
                addLearningFields: function() {

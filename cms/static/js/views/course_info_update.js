@@ -1,24 +1,13 @@
 define(['codemirror',
-<<<<<<< HEAD
-        'js/utils/modal',
-        'js/utils/date_utils',
-        'edx-ui-toolkit/js/utils/html-utils',
-        'js/views/course_info_helper',
-        'js/views/validation',
-        'js/models/course_update',
-        'common/js/components/utils/view_utils',
-        'common/js/components/views/feedback_prompt',
-        'common/js/components/views/feedback_notification'],
-=======
     'js/utils/modal',
     'js/utils/date_utils',
     'edx-ui-toolkit/js/utils/html-utils',
     'js/views/course_info_helper',
     'js/views/validation',
     'js/models/course_update',
+    'common/js/components/utils/view_utils',
     'common/js/components/views/feedback_prompt',
     'common/js/components/views/feedback_notification'],
->>>>>>> 896e66f8fcc1d2828d9c8299da0187ba96e8156e
     function(CodeMirror, ModalUtils, DateUtils, HtmlUtils, CourseInfoHelper, ValidatingView, CourseUpdateModel,
              ViewUtils,
              PromptView, NotificationView) {
