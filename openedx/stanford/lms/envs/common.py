@@ -139,13 +139,6 @@ TEMPLATE_VISIBLE_SETTINGS = [
     # These settings' values will be exposed to all templates
     'FEATURES',
 ]
-TEMPLATES[0]['DIRS'] += glob(STANFORD_ROOT / 'djangoapps/*/templates')
-TEMPLATES[0]['DIRS'] += glob(STANFORD_ROOT / 'common/djangoapps/*/templates')
-TEMPLATES[0]['DIRS'] += glob(STANFORD_ROOT / 'lms/djangoapps/*/templates')
-TEMPLATES[0]['OPTIONS']['context_processors'] += [
-    # Include TEMPLATE_VISIBLE_SETTINGS in templates
-    'settings_context_processor.context_processors.settings',
-]
 TYPES_WITH_CHILD_PROBLEMS_LIST = [
     # These types are children of children of units.
     'library_content',
