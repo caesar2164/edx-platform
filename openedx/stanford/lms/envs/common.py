@@ -90,9 +90,9 @@ INSTALLED_APPS += (
     'inline_dropdown',
     'xblockmufi',
 )
-MAKO_TEMPLATES['main'] += glob(STANFORD_ROOT / 'djangoapps/*/templates')
-MAKO_TEMPLATES['main'] += glob(STANFORD_ROOT / 'common/djangoapps/*/templates')
-MAKO_TEMPLATES['main'] += glob(STANFORD_ROOT / 'lms/djangoapps/*/templates')
+MAKO_TEMPLATE_DIRS_BASE += glob(STANFORD_ROOT / 'djangoapps/*/templates')
+MAKO_TEMPLATE_DIRS_BASE += glob(STANFORD_ROOT / 'common/djangoapps/*/templates')
+MAKO_TEMPLATE_DIRS_BASE += glob(STANFORD_ROOT / 'lms/djangoapps/*/templates')
 MAX_ENROLLEES_FOR_METRICS_USING_DB = 100
 MIDDLEWARE_CLASSES += (
     'sneakpeek_deeplink.middleware.SneakPeekDeepLinkMiddleware',
