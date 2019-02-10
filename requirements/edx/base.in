@@ -68,15 +68,15 @@ edx-ace==0.1.8
 edx-analytics-data-api-client
 edx-ccx-keys
 edx-celeryutils
-edx-completion<1.0.0
+edx-completion
 edx-django-release-util             # Release utils for the edx release pipeline
-edx-drf-extensions<1.8.0
+edx-drf-extensions
 edx-django-oauth2-provider==1.2.5
 edx-django-sites-extensions==2.3.1
 edx-enterprise
 edx-milestones
 edx-oauth2-provider
-edx-organizations<1.0.0
+edx-organizations
 edx-proctoring==1.4.0
 edx-rest-api-client
 edx-search
