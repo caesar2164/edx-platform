@@ -23,6 +23,7 @@ ddt                       # Run a test case multiple times with different input;
 edx-i18n-tools>=0.4.5     # Commands for developers and translators to extract, compile and validate translations
 edx-lint                  # pylint extensions for Open edX repositories
 factory_boy==2.8.1        # Library for creating test fixtures, used in many tests
+flaky==3.5.3
 freezegun                 # Allows tests to mock the output of assorted datetime module functions
 httpretty                 # Library for mocking HTTP requests, used in many tests
 isort                     # For checking and fixing the order of imports
