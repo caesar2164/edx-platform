@@ -133,10 +133,10 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                        this.model.get('about_sidebar_html')
                    );
                    this.codeMirrorize(null, $('#course-about-sidebar-html')[0]);
-                   this.$el.find("#" this.fieldToSelectorMap.pre_enrollment_email_subject).val(this.model.get("pre_enrollment_email_subject"));
-                   this.$el.find("#" this.fieldToSelectorMap.post_enrollment_email_subject).val(this.model.get("post_enrollment_email_subject"));
-                   this.$el.find("#" this.fieldToSelectorMap.pre_enrollment_email).val(this.model.get("pre_enrollment_email"));
-                   this.$el.find("#" this.fieldToSelectorMap.post_enrollment_email).val(this.model.get("post_enrollment_email"));
+                   this.$el.find("#" + this.fieldToSelectorMap.pre_enrollment_email_subject).val(this.model.get("pre_enrollment_email_subject"));
+                   this.$el.find("#" + this.fieldToSelectorMap.post_enrollment_email_subject).val(this.model.get("post_enrollment_email_subject"));
+                   this.$el.find("#" + this.fieldToSelectorMap.pre_enrollment_email).val(this.model.get("pre_enrollment_email"));
+                   this.$el.find("#" + this.fieldToSelectorMap.post_enrollment_email).val(this.model.get("post_enrollment_email"));
                    this.codeMirrorize(null, $("#pre-enrollment-email")[0]);
                    this.codeMirrorize(null, $("#post-enrollment-email")[0]);
                    this.enable_enrollment_email_box.prop('checked', this.model.get('enable_enrollment_email'));
