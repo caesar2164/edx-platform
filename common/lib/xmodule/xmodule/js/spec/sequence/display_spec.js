@@ -64,21 +64,21 @@
             });
 
             it('updates the unit number in URL when going to the next unit', function() {
-                unit = this.sequence.$('.nav-item[data-index=1]').focus();
+                unit = this.sequence.$('.nav-item[data-index=0]').focus();
                 this.sequence.nextNav(unit, unit.data('index'), this.sequence.$('.nav-item').length-1);
                 position = this.sequence.$('.nav-item.focused').data('element');
-                expect(updateBrowserUrl(this.sequence, position)).toBe(origin + pathname + '3');
+                expect(updateBrowserUrl(this.sequence, position)).toBe(origin + pathname + '2');
             });
 
             it('updates the unit number in URL when jumping to the last unit in the previous section', function() {
                 unit = this.sequence.$('.nav-item[data-index=0]').focus();
                 this.sequence.previousNav(unit, unit.data('index'));
                 position = this.sequence.$('.nav-item.focused').data('element');
-                expect(updateBrowserUrl(this.sequence, position)).toBe(origin + pathname + '3');
+                expect(updateBrowserUrl(this.sequence, position)).toBe(origin + pathname + '2');
             });
 
             it('updates the unit number in URL when jumping to the first unit in the next section', function() {
-                unit = this.sequence.$('.nav-item[data-index=2]').focus();
+                unit = this.sequence.$('.nav-item[data-index=1]').focus();
                 this.sequence.nextNav(unit, unit.data('index'), this.sequence.$('.nav-item').length-1);
                 position = this.sequence.$('.nav-item.focused').data('element');
                 expect(updateBrowserUrl(this.sequence, position)).toBe(origin + pathname + '1');
